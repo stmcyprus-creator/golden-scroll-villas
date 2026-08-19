@@ -19,7 +19,7 @@ export function Hero() {
   return (
     <section ref={ref} id="top" className="relative h-[100svh] overflow-hidden">
       {/* Slow camera flight over the sea */}
-      <motion.div className="absolute inset-0 -z-10" style={{ y: bgY }}>
+      <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         <motion.img
           src={heroSea}
           alt="Aerial view over the Mediterranean coastline at golden hour"
@@ -34,13 +34,13 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-ink/60 via-transparent to-transparent" />
       </motion.div>
 
-      <motion.div style={{ y: decoY }} className="pointer-events-none absolute inset-0 -z-[5]">
+      <motion.div style={{ y: decoY }} className="pointer-events-none absolute inset-0 z-[1]">
         <div className="absolute left-1/2 top-1/3 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-primary/8 blur-[140px]" />
       </motion.div>
 
       <motion.div
         style={{ y: contentY, opacity: fade }}
-        className="relative flex h-full max-w-[1600px] flex-col justify-end px-6 pb-24 md:px-12 md:pb-28"
+        className="relative z-10 flex h-full max-w-[1600px] flex-col justify-end px-6 pb-24 md:px-12 md:pb-28"
       >
         <motion.p
           className="eyebrow mb-8"
@@ -90,7 +90,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2, delay: 3.8 }}
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block"
+        className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 md:block"
       >
         <div className="h-14 w-px bg-gradient-to-b from-transparent via-primary/60 to-transparent" />
       </motion.div>

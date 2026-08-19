@@ -72,7 +72,7 @@ export function Locations() {
           <div className="glass relative overflow-hidden rounded-sm">
             <div className="grid lg:grid-cols-[1.35fr_1fr]">
               {/* Map */}
-              <div className="relative h-[380px] border-b border-border/50 lg:h-[560px] lg:border-b-0 lg:border-r">
+              <div className="relative h-[380px] overflow-hidden border-b border-border/50 lg:h-[560px] lg:border-b-0 lg:border-r">
                 <svg viewBox="0 0 1000 600" className="h-full w-full">
                   <defs>
                     <radialGradient id="halo" cx="50%" cy="50%" r="50%">
