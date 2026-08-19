@@ -30,8 +30,8 @@ export function Hero() {
           animate={{ scale: 1.02, x: "1%" }}
           transition={{ duration: 26, ease: "linear" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/20 to-ink" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/10 to-ink" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-ink/10 to-transparent" />
       </motion.div>
 
       <motion.div style={{ y: decoY }} className="pointer-events-none absolute inset-0 z-[1]">
