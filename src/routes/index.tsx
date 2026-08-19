@@ -12,20 +12,42 @@ import { useLenis } from "@/components/experience/useLenis";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Эс тэ эм риал эстейт — элитная недвижимость у Средиземного моря" },
+      { title: "Эс тэ эм риал эстейт — элитная недвижимость у моря" },
       {
         name: "description",
         content:
-          "Частный офис недвижимости: виллы и пентхаусы у моря в Турции, Северном Кипре и ОАЭ.",
+          "Частный офис недвижимости: виллы и пентхаусы у моря в Аланье, Кирении и Дубае. Подбор, сопровождение сделки и консьерж-сервис.",
       },
-      { property: "og:title", content: "Эс тэ эм риал эстейт — элитная недвижимость у Средиземного моря" },
+      { property: "og:title", content: "Эс тэ эм риал эстейт — элитная недвижимость у моря" },
       {
         property: "og:description",
         content:
           "Виллы и пентхаусы у моря в Турции, Северном Кипре и ОАЭ, отобранные вручную.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "ru_RU" },
+      { property: "og:site_name", content: "Эс тэ эм риал эстейт" },
+      { property: "og:url", content: "https://golden-scroll-villas.lovable.app/" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Эс тэ эм риал эстейт — элитная недвижимость у моря" },
+      {
+        name: "twitter:description",
+        content: "Виллы и пентхаусы у моря в Аланье, Кирении и Дубае.",
+      },
+    ],
+    links: [{ rel: "canonical", href: "https://golden-scroll-villas.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "RealEstateAgent",
+          name: "Эс тэ эм риал эстейт",
+          url: "https://golden-scroll-villas.lovable.app/",
+          email: "vip@stmrealestate.ru",
+          areaServed: ["Аланья", "Киренья", "Дубай"],
+        }),
+      },
     ],
   }),
   component: Index,
