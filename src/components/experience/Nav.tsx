@@ -101,8 +101,8 @@ export function Nav() {
                 className="space-y-1 text-sm text-muted-foreground"
               >
                 <p className="eyebrow">Частный офис</p>
-                <p>Бодрум · Кирения · Дубай</p>
-                <p>concierge@stm.realestate</p>
+                <p>Аланья · Киренья · Дубай</p>
+                <p>vip@stmrealestate.ru</p>
               </motion.div>
             </motion.aside>
           </motion.div>
