@@ -52,7 +52,7 @@ const regions: Region[] = [
 ];
 
 export function Locations() {
-  const [active, setActive] = useState<Region>(regions[0]);
+  const [active, setActive] = useState<Region>(regions[0]!);
 
   const { x, y, zoom } = active.focus;
   const tx = 500 - x * zoom;
