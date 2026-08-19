@@ -4,7 +4,7 @@ import heroSea from "@/assets/hero-sea.jpg";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-const lines = ["Discover", "Your New Life", "by the Mediterranean"];
+const lines = ["Откройте", "новую жизнь", "у Средиземного моря"];
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -22,7 +22,7 @@ export function Hero() {
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         <motion.img
           src={heroSea}
-          alt="Aerial view over the Mediterranean coastline at golden hour"
+          alt="Вид с воздуха на средиземноморское побережье в золотой час"
           width={1920}
           height={1088}
           className="h-[112%] w-full object-cover"
@@ -48,7 +48,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.8, delay: 0.6, ease: EASE }}
         >
-          Türkiye · North Cyprus · UAE
+          Турция · Северный Кипр · ОАЭ
         </motion.p>
 
         <h1 className="display-xl max-w-5xl">
@@ -77,11 +77,11 @@ export function Hero() {
             className="glass group relative overflow-hidden rounded-full px-9 py-4 text-[0.7rem] uppercase tracking-[0.28em] transition-all duration-700 hover:border-primary/40"
           >
             <span className="relative z-10 transition-colors duration-700 group-hover:text-primary">
-              Begin the journey
+              Начать путешествие
             </span>
           </a>
           <span className="text-sm text-muted-foreground">
-            A private selection of 84 residences
+            Частная подборка из 84 резиденций
           </span>
         </motion.div>
       </motion.div>

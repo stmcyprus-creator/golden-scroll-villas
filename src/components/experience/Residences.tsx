@@ -7,26 +7,26 @@ import { Rise, RevealText } from "./RevealText";
 const residences = [
   {
     image: prop1,
-    alt: "White stone seafront villa with a long pool in Bodrum",
+    alt: "Белая каменная вилла у моря с длинным бассейном в Бодруме",
     name: "Villa Serein",
-    place: "Bodrum, Türkiye",
-    meta: "5 bed · 620 m² · private beach",
+    place: "Бодрум, Турция",
+    meta: "5 спален · 620 м² · частный пляж",
     price: "€ 4 250 000",
   },
   {
     image: prop2,
-    alt: "Penthouse terrace overlooking the Dubai skyline at dusk",
+    alt: "Терраса пентхауса с видом на дубайский небоскрёб в сумерках",
     name: "Sky Residence 78",
-    place: "Downtown, Dubai",
-    meta: "3 bed · 340 m² · skyline terrace",
+    place: "Даунтаун, Дубай",
+    meta: "3 спальни · 340 м² · терраса с панорамой",
     price: "$ 3 900 000",
   },
   {
     image: prop3,
-    alt: "Beachfront residence with wooden pergola in Northern Cyprus",
+    alt: "Резиденция у пляжа с деревянной перголой на Северном Кипре",
     name: "Maison Kyrenia",
-    place: "Kyrenia, North Cyprus",
-    meta: "4 bed · 410 m² · marina access",
+    place: "Кирения, Северный Кипр",
+    meta: "4 спальни · 410 м² · выход к марине",
     price: "£ 1 780 000",
   },
 ];
@@ -37,12 +37,11 @@ export function Residences() {
       <div className="mx-auto max-w-[1600px] px-6 md:px-12">
         <div className="mb-20 flex flex-col gap-8 md:mb-28 md:flex-row md:items-end md:justify-between">
           <h2 className="display-lg max-w-2xl">
-            <RevealText text="Only then, the residences." stagger={0.12} />
+            <RevealText text="И только тогда — резиденции." stagger={0.12} />
           </h2>
           <Rise delay={0.3}>
             <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-              Each address is visited, photographed and negotiated by us. We show
-              three at a time — never a catalogue.
+              Каждый адрес мы посещаем, снимаем и обсуждаем лично. Показываем по три — никогда не каталог.
             </p>
           </Rise>
         </div>
@@ -82,7 +81,7 @@ export function Residences() {
                   <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-[900ms] [transition-timing-function:var(--ease-silk)] group-hover:grid-rows-[1fr]">
                     <div className="overflow-hidden">
                       <button className="mt-6 w-full rounded-full border border-primary/30 px-6 py-3 text-[0.65rem] uppercase tracking-[0.28em] text-primary transition-colors duration-700 hover:bg-primary/10">
-                        Request the dossier
+                        Запросить досье
                       </button>
                     </div>
                   </div>
