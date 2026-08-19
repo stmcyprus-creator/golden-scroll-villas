@@ -5,19 +5,19 @@ import storyVilla from "@/assets/story-villa.jpg";
 import { RevealText } from "./RevealText";
 
 const slides = [
-  { image: gal1, caption: "Living room, Villa Serein", place: "Bodrum" },
-  { image: gal2, caption: "Courtyard with a hundred-year olive", place: "Kalkan" },
-  { image: storyVilla, caption: "Evening terrace", place: "Kyrenia" },
-  { image: gal3, caption: "Rooftop, after sunset", place: "Dubai" },
+  { image: gal1, caption: "Гостиная, Villa Serein", place: "Бодрум" },
+  { image: gal2, caption: "Дворик с вековой оливой", place: "Калкан" },
+  { image: storyVilla, caption: "Вечерняя терраса", place: "Кирения" },
+  { image: gal3, caption: "Крыша, после заката", place: "Дубай" },
 ];
 
 export function Gallery() {
   return (
     <section id="gallery" className="relative py-32 md:py-48">
       <div className="mx-auto mb-16 max-w-[1600px] px-6 md:mb-24 md:px-12">
-        <p className="eyebrow mb-8">Gallery</p>
+        <p className="eyebrow mb-8">Галерея</p>
         <h2 className="display-lg max-w-3xl">
-          <RevealText text="Look slowly. Scroll sideways." stagger={0.12} />
+          <RevealText text="Смотрите медленно. Листайте вбок." stagger={0.12} />
         </h2>
       </div>
 

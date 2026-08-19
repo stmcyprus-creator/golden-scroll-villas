@@ -12,17 +12,17 @@ import { useLenis } from "@/components/experience/useLenis";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Meraki — Luxury Residences by the Mediterranean" },
+      { title: "Эс тэ эм риал эстейт — элитная недвижимость у Средиземного моря" },
       {
         name: "description",
         content:
-          "A private property office curating seafront villas and penthouses in Türkiye, North Cyprus and the UAE.",
+          "Частный офис недвижимости: виллы и пентхаусы у моря в Турции, Северном Кипре и ОАЭ.",
       },
-      { property: "og:title", content: "Meraki — Luxury Residences by the Mediterranean" },
+      { property: "og:title", content: "Эс тэ эм риал эстейт — элитная недвижимость у Средиземного моря" },
       {
         property: "og:description",
         content:
-          "Seafront villas and penthouses in Türkiye, North Cyprus and the UAE, selected by hand.",
+          "Виллы и пентхаусы у моря в Турции, Северном Кипре и ОАЭ, отобранные вручную.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

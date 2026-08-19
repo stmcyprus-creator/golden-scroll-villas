@@ -16,37 +16,37 @@ type Region = {
 const regions: Region[] = [
   {
     id: "turkiye",
-    label: "Türkiye",
-    tagline: "Aegean bays, pine hills, private jetties.",
+    label: "Турция",
+    tagline: "Эгейские бухты, сосновые холмы, частные причалы.",
     focus: { x: 320, y: 200, zoom: 2.4 },
     dot: { x: 320, y: 200 },
     projects: [
-      { name: "Yalıkavak Marina Villas", detail: "12 residences · from € 2.1M" },
-      { name: "Kalkan Cliff Houses", detail: "7 residences · from € 1.4M" },
-      { name: "Çeşme Dune Collection", detail: "18 residences · from € 980K" },
+      { name: "Yalıkavak Marina Villas", detail: "12 резиденций · от € 2,1M" },
+      { name: "Kalkan Cliff Houses", detail: "7 резиденций · от € 1,4M" },
+      { name: "Çeşme Dune Collection", detail: "18 резиденций · от € 980K" },
     ],
   },
   {
     id: "cyprus",
-    label: "North Cyprus",
-    tagline: "Slow mornings between mountain and sea.",
+    label: "Северный Кипр",
+    tagline: "Тихие утра между горами и морем.",
     focus: { x: 470, y: 300, zoom: 2.6 },
     dot: { x: 470, y: 300 },
     projects: [
-      { name: "Kyrenia Harbour Lofts", detail: "24 residences · from £ 420K" },
-      { name: "Esentepe Golf Estate", detail: "31 residences · from £ 310K" },
+      { name: "Kyrenia Harbour Lofts", detail: "24 резиденции · от £ 420K" },
+      { name: "Esentepe Golf Estate", detail: "31 резиденция · от £ 310K" },
     ],
   },
   {
     id: "uae",
-    label: "United Arab Emirates",
-    tagline: "Altitude, light and absolute service.",
+    label: "ОАЭ",
+    tagline: "Высота, свет и безупречный сервис.",
     focus: { x: 760, y: 400, zoom: 2.7 },
     dot: { x: 760, y: 400 },
     projects: [
-      { name: "Palm Bay Penthouses", detail: "9 residences · from $ 5.2M" },
-      { name: "Marina Sky Collection", detail: "40 residences · from $ 1.6M" },
-      { name: "Desert Ridge Mansions", detail: "5 residences · from $ 11M" },
+      { name: "Palm Bay Penthouses", detail: "9 резиденций · от $ 5,2M" },
+      { name: "Marina Sky Collection", detail: "40 резиденций · от $ 1,6M" },
+      { name: "Desert Ridge Mansions", detail: "5 резиденций · от $ 11M" },
     ],
   },
 ];
@@ -62,9 +62,9 @@ export function Locations() {
     <section id="locations" className="relative overflow-hidden py-32 md:py-48">
       <div className="mx-auto max-w-[1600px] px-6 md:px-12">
         <div className="mb-16 max-w-2xl">
-          <p className="eyebrow mb-8">Where we operate</p>
+          <p className="eyebrow mb-8">Где мы работаем</p>
           <h2 className="display-lg">
-            <RevealText text="Three coastlines, one standard." stagger={0.12} />
+            <RevealText text="Три побережья — один стандарт." stagger={0.12} />
           </h2>
         </div>
 

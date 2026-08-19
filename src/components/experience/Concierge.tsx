@@ -13,24 +13,24 @@ type Step = {
 
 const steps: Step[] = [
   {
-    question: "Where do you imagine waking up?",
-    hint: "Choose one — you can change your mind later.",
-    options: ["Türkiye", "North Cyprus", "United Arab Emirates", "Still deciding"],
+    question: "Где вы представляете себе пробуждение?",
+    hint: "Выберите один вариант — передумать можно позже.",
+    options: ["Турция", "Северный Кипр", "ОАЭ", "Ещё думаю"],
   },
   {
-    question: "What is this home for?",
-    hint: "It changes everything we show you.",
-    options: ["Living", "Seasons by the sea", "Investment", "Residency"],
+    question: "Для чего вам этот дом?",
+    hint: "От этого зависит всё, что мы покажем.",
+    options: ["Для жизни", "Сезоны у моря", "Инвестиции", "Резидентство"],
   },
   {
-    question: "A comfortable budget?",
-    hint: "An honest range saves us both time.",
-    options: ["under € 500K", "€ 500K – 1.5M", "€ 1.5M – 4M", "€ 4M +"],
+    question: "Комфортный бюджет?",
+    hint: "Честный диапазон сэкономит время нам обоим.",
+    options: ["до € 500K", "€ 500K – 1,5M", "€ 1,5M – 4M", "€ 4M +"],
   },
   {
-    question: "And how should we reach you?",
-    hint: "One message from a real person. No lists.",
-    placeholder: "Email or phone",
+    question: "И как с вами связаться?",
+    hint: "Одно сообщение от реального человека. Никаких рассылок.",
+    placeholder: "Email или телефон",
   },
 ];
 
@@ -53,13 +53,13 @@ export function Concierge() {
       <div className="mx-auto max-w-[1600px] px-6 md:px-12">
         <div className="grid gap-16 lg:grid-cols-[1fr_1.1fr] lg:gap-24">
           <div>
-            <p className="eyebrow mb-8">Private concierge</p>
+            <p className="eyebrow mb-8">Частный консьерж</p>
             <h2 className="display-lg">
-              <RevealText text="Let's find your perfect property." stagger={0.11} />
+              <RevealText text="Найдём ваш идеальный объект." stagger={0.11} />
             </h2>
             <p className="mt-8 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              Four quiet questions instead of a form. We answer personally, usually
-              within a few hours.
+              Четыре ненавязчивых вопроса вместо формы. Отвечаем лично, обычно
+              в течение нескольких часов.
             </p>
           </div>
 
@@ -120,7 +120,7 @@ export function Concierge() {
                         type="submit"
                         className="shrink-0 text-[0.65rem] uppercase tracking-[0.28em] text-primary"
                       >
-                        Send
+                        Отправить
                       </button>
                     </form>
                   )}
@@ -132,9 +132,9 @@ export function Concierge() {
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   transition={{ duration: 1.2, ease: EASE }}
                 >
-                  <h3 className="font-display text-4xl gold-text">Thank you.</h3>
+                  <h3 className="font-display text-4xl gold-text">Спасибо.</h3>
                   <p className="mt-4 max-w-sm text-sm text-muted-foreground">
-                    Your selection is being prepared by hand. We'll be in touch shortly.
+                    Ваша подборка готовится вручную. Мы скоро свяжемся.
                   </p>
                   <div className="mt-10 space-y-3">
                     {answers.map((a, i) => (
@@ -156,7 +156,7 @@ export function Concierge() {
                 }}
                 className="absolute bottom-8 left-8 text-[0.62rem] uppercase tracking-[0.26em] text-muted-foreground transition-colors hover:text-primary md:bottom-14 md:left-14"
               >
-                Back
+                Назад
               </button>
             )}
           </div>

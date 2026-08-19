@@ -8,21 +8,21 @@ import { RevealText } from "./RevealText";
 const chapters = [
   {
     image: storyVilla,
-    line: "Some properties change your address.",
-    chapter: "Chapter I",
-    alt: "Minimalist stone villa with an infinity pool above the sea at dusk",
+    line: "Некоторые объекты меняют ваш адрес.",
+    chapter: "Глава I",
+    alt: "Минималистичная каменная вилла с инфинити-бассейном над морем в сумерках",
   },
   {
     image: gal1,
-    line: "Some change your lifestyle.",
-    chapter: "Chapter II",
-    alt: "Calm travertine living room opening to a bright sea horizon",
+    line: "Некоторые меняют ваш образ жизни.",
+    chapter: "Глава II",
+    alt: "Тихая гостиная из травертина с видом на яркий морской горизонт",
   },
   {
     image: storyPool,
-    line: "Some change your future.",
-    chapter: "Chapter III",
-    alt: "View from an infinity pool towards the sunset over the sea",
+    line: "Некоторые меняют ваше будущее.",
+    chapter: "Глава III",
+    alt: "Вид из инфинити-бассейна на закат над морем",
   },
 ];
 
