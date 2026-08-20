@@ -36,14 +36,14 @@ export function Trust() {
         <div className="mb-24 flex flex-col gap-10 md:mb-36 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <p className="eyebrow mb-8">Как мы работаем</p>
-            <h2 className="display-lg">
+            <h2 className="display-lg text-balance">
               <RevealText text="Выбор начинается задолго до первого показа." />
             </h2>
           </div>
           <Rise delay={0.3}>
-            <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Мы помогаем принимать решения, ценность которых не исчезает
-              со временем. Наше участие продолжается и после сделки.
+            <p className="max-w-xs text-pretty text-sm leading-relaxed text-muted-foreground">
+              Мы помогаем сделать выбор, ценность которого не исчезает со
+              временем. И остаёмся рядом после сделки.
             </p>
           </Rise>
         </div>
