@@ -98,6 +98,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
+      {
+        rel: "preload",
+        as: "image",
+        type: "image/webp",
+        href: stmLogo.url,
+        fetchPriority: "high",
+      },
     ],
   }),
   shellComponent: RootShell,
