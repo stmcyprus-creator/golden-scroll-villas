@@ -22,7 +22,7 @@ export function RevealText({
   duration?: number;
   once?: boolean;
 }) {
-  const { enabled, useBlur, d } = useCinematics();
+  const { enabled, useBlur, lowPower, d, s: st } = useCinematics();
   const words = text.split(" ");
   return (
     <span className={`text-balance ${className}`}>
@@ -32,21 +32,25 @@ export function RevealText({
           className="inline-block overflow-hidden align-bottom pb-[0.14em] -mb-[0.14em]"
         >
           <motion.span
-            className="inline-block will-change-[transform,opacity]"
+            className={enabled ? "inline-block will-change-[transform,opacity]" : "inline-block"}
             initial={{
               opacity: 0,
-              y: "0.55em",
-              ...(useBlur ? { filter: "blur(12px)" } : {}),
+              y: lowPower ? "0.35em" : "0.55em",
+              // Filter is always declared so motion owns the inline style;
+              // weaker devices simply start at zero blur.
+              filter: useBlur ? "blur(12px)" : "blur(0px)",
             }}
             whileInView={{
               opacity: 1,
               y: "0em",
-              ...(useBlur ? { filter: "blur(0px)" } : {}),
+              // Always clear the filter: the device may downgrade to
+              // "no blur" after first paint, and a stale blur must not stick.
+              filter: "blur(0px)",
             }}
             viewport={{ once, margin: VIEWPORT.margin }}
             transition={{
               duration: d(duration),
-              delay: enabled ? delay + i * stagger : 0,
+              delay: enabled ? st(delay + i * stagger) : 0,
               ease: EASE,
             }}
           >
@@ -74,14 +78,14 @@ export function Rise({
   duration?: number;
   className?: string;
 }) {
-  const { enabled, d } = useCinematics();
+  const { enabled, lowPower, d, s: st } = useCinematics();
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: enabled ? y : 0 }}
+      initial={{ opacity: 0, y: enabled ? (lowPower ? Math.min(y, 20) : y) : 0 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={VIEWPORT}
-      transition={{ duration: d(duration), delay: enabled ? delay : 0, ease: EASE }}
+      transition={{ duration: d(duration), delay: st(delay), ease: EASE }}
     >
       {children}
     </motion.div>

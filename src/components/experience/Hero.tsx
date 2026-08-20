@@ -1,19 +1,21 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import heroSea from "@/assets/hero-sea.jpg";
-
-const EASE = [0.16, 1, 0.3, 1] as const;
+import { EASE, useCinematics } from "./orchestrator";
 
 const lines = ["Откройте", "новую жизнь", "у Средиземного моря"];
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
+  const { enabled, useBlur, lowPower, d, s: st, p: depth } = useCinematics();
+  const blurIn = (amount: string) => ({ filter: useBlur ? `blur(${amount})` : "blur(0px)" });
+  const blurOut = { filter: "blur(0px)" };
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
   // Depth: background moves least, decorative elements most.
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", `${12 * depth}%`]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "0%"]);
-  const decoY = useTransform(scrollYProgress, [0, 1], ["0%", "24%"]);
+  const decoY = useTransform(scrollYProgress, [0, 1], ["0%", `${24 * depth}%`]);
   const fade = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
 
   return (
@@ -27,12 +29,20 @@ export function Hero() {
           height={1088}
           fetchPriority="high"
           className="h-[112%] w-full object-cover"
-          initial={{ scale: 1.2, x: "-2.5%", filter: "blur(18px) saturate(0.72)" }}
-          animate={{ scale: 1.02, x: "1%", filter: "blur(0px) saturate(1)" }}
+          initial={{
+            scale: enabled ? (lowPower ? 1.08 : 1.2) : 1,
+            x: enabled ? "-2.5%" : "0%",
+            filter: useBlur ? "blur(18px) saturate(0.72)" : "blur(0px) saturate(1)",
+          }}
+          animate={{
+            scale: enabled ? 1.02 : 1,
+            x: enabled ? "1%" : "0%",
+            filter: "blur(0px) saturate(1)",
+          }}
           transition={{
-            scale: { duration: 34, ease: "linear" },
-            x: { duration: 34, ease: "linear" },
-            filter: { duration: 3.2, ease: EASE },
+            scale: { duration: enabled ? 34 : 0, ease: "linear" },
+            x: { duration: enabled ? 34 : 0, ease: "linear" },
+            filter: { duration: d(3.2), ease: EASE },
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-ink/45 via-ink/8 to-ink" />
@@ -41,13 +51,13 @@ export function Hero() {
         <motion.div
           className="absolute inset-0 bg-[linear-gradient(105deg,transparent_38%,oklch(0.83_0.083_87/0.12)_50%,transparent_62%)]"
           initial={{ x: "-45%", opacity: 0 }}
-          animate={{ x: "45%", opacity: [0, 1, 0] }}
-          transition={{ duration: 6.5, delay: 1.4, ease: EASE }}
+          animate={enabled ? { x: "45%", opacity: [0, 1, 0] } : { opacity: 0 }}
+          transition={{ duration: d(6.5), delay: st(1.4), ease: EASE }}
         />
       </motion.div>
 
       <motion.div style={{ y: decoY }} className="pointer-events-none absolute inset-0 z-[1]">
-        <div className="absolute left-1/2 top-1/3 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-primary/8 blur-[140px]" />
+        <div className={`absolute left-1/2 top-1/3 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-primary/8 ${lowPower ? "blur-[70px]" : "blur-[140px]"}`} />
       </motion.div>
 
       <motion.div
@@ -55,10 +65,10 @@ export function Hero() {
         className="relative z-10 flex h-full max-w-[1600px] flex-col justify-end px-6 pb-28 md:px-12 md:pb-36"
       >
         <motion.p
-          className="eyebrow mb-10"
-          initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 2.2, delay: 0.8, ease: EASE }}
+          className="eyebrow mb-8 md:mb-10"
+          initial={{ opacity: 0, y: 14, ...blurIn("8px") }}
+          animate={{ opacity: 1, y: 0, ...blurOut }}
+          transition={{ duration: d(2.2), delay: st(0.8), ease: EASE }}
         >
           Турция · Северный Кипр · ОАЭ
         </motion.p>
@@ -68,9 +78,9 @@ export function Hero() {
             <span key={line} className="block overflow-hidden pb-[0.06em]">
               <motion.span
                 className={`inline-block ${i === 2 ? "gold-text italic" : ""}`}
-                initial={{ opacity: 0, y: "0.72em", filter: "blur(16px)" }}
-                animate={{ opacity: 1, y: "0em", filter: "blur(0px)" }}
-                transition={{ duration: 2.4, delay: 1.1 + i * 0.62, ease: EASE }}
+                initial={{ opacity: 0, y: lowPower ? "0.45em" : "0.72em", ...blurIn("16px") }}
+                animate={{ opacity: 1, y: "0em", ...blurOut }}
+                transition={{ duration: d(2.4), delay: st(1.1 + i * 0.62), ease: EASE }}
               >
                 {line}
               </motion.span>
@@ -79,10 +89,10 @@ export function Hero() {
         </h1>
 
         <motion.div
-          className="mt-14 flex flex-wrap items-center gap-8"
-          initial={{ opacity: 0, y: 22, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 2.2, delay: 3.5, ease: EASE }}
+          className="mt-10 flex flex-wrap items-center gap-6 md:mt-14 md:gap-8"
+          initial={{ opacity: 0, y: 22, ...blurIn("8px") }}
+          animate={{ opacity: 1, y: 0, ...blurOut }}
+          transition={{ duration: d(2.2), delay: st(enabled && lowPower ? 2.4 : 3.5), ease: EASE }}
         >
           <a
             href="#story"
@@ -93,7 +103,7 @@ export function Hero() {
               Начать путешествие
             </span>
           </a>
-          <span className="text-sm text-muted-foreground">
+          <span className="text-[0.92rem] text-muted-foreground md:text-sm">
             Частная коллекция из 84 резиденций
           </span>
         </motion.div>
@@ -102,7 +112,7 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 2, delay: 3.8 }}
+        transition={{ duration: d(2), delay: st(3.8) }}
         className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 md:block"
       >
         <div className="h-14 w-px bg-gradient-to-b from-transparent via-primary/60 to-transparent" />

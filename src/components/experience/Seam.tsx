@@ -31,13 +31,13 @@ export function Seam({
       ref={ref}
       id={id}
       aria-hidden={!line}
-      className="pointer-events-none relative flex h-[46svh] w-full items-center justify-center overflow-hidden md:h-[56svh]"
+      className="pointer-events-none relative flex h-[38svh] w-full items-center justify-center overflow-hidden md:h-[56svh]"
     >
       {/* Warm breath of light that bleeds across the cut */}
       <motion.div
         style={{ opacity: enabled ? glow : 0.35 }}
         className={`absolute left-1/2 top-1/2 h-[34rem] w-[62rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.07] ${
-          lowPower ? "blur-[80px]" : "blur-[150px]"
+          lowPower ? "blur-[60px]" : "blur-[150px]"
         }`}
       />
 
@@ -50,7 +50,7 @@ export function Seam({
       {line ? (
         <motion.p
           style={{ opacity: enabled ? textOpacity : 1, y: enabled ? textY : 0 }}
-          className="relative z-10 max-w-xl px-6 text-center font-display text-xl leading-relaxed tracking-[-0.01em] text-foreground/55 italic md:text-2xl"
+          className="relative z-10 max-w-[22ch] text-pretty px-6 text-center font-display text-lg leading-relaxed tracking-[-0.01em] text-foreground/55 italic sm:max-w-xl sm:text-xl md:text-2xl"
         >
           {line}
         </motion.p>
