@@ -7,6 +7,8 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // Static build: no Node/Workers runtime in the output.
+  nitro: false,
   tanstackStart: {
     // Static build: every route is rendered to HTML at build time into dist/client,
     // so the output can be hosted on any static host without a Node runtime.
