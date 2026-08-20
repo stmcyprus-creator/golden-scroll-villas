@@ -39,7 +39,7 @@ const steps: Step[] = [
   {
     key: "contact",
     question: "Как продолжить разговор?",
-    hint: "Ответит человек, который будет вести ваш подбор.",
+    hint: "Ответит человек, который будет рядом на всём пути выбора.",
     placeholder: "Email или телефон",
   },
 ];
@@ -78,7 +78,7 @@ function suggest(answers: Record<string, string>) {
   const base =
     byPlace[place] ??
     byView[view] ?? {
-      name: "Личная подборка",
+      name: "Личная коллекция",
       where: "Три направления",
       note: "Мы соберём три адреса под ваш сценарий — по одному на каждый из миров.",
     };
@@ -203,7 +203,7 @@ export function Concierge() {
                   animate={{ opacity: 1, y: 0, ...blurOut }}
                   transition={{ duration: d(TIMING.reveal), ease: EASE }}
                 >
-                  <p className="eyebrow mb-6">Подобрано для вас</p>
+                  <p className="eyebrow mb-6">Выбрано для вас</p>
                   <h3 className="font-display text-4xl gold-text">{picked.name}</h3>
                   <p className="mt-2 text-[0.62rem] uppercase tracking-[0.28em] text-muted-foreground">
                     {picked.where}
@@ -221,7 +221,7 @@ export function Concierge() {
                     }}
                     className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground"
                   >
-                    {picked.angle} Подборка готовится вручную — мы скоро свяжемся.
+                    {picked.angle} Коллекция собирается вручную — мы скоро свяжемся.
                   </motion.p>
 
                   <div className="mt-10 space-y-3 border-t border-border/60 pt-8">

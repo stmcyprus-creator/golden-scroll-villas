@@ -94,7 +94,7 @@ export function Hero() {
             </span>
           </a>
           <span className="text-sm text-muted-foreground">
-            Частная подборка из 84 резиденций
+            Частная коллекция из 84 резиденций
           </span>
         </motion.div>
       </motion.div>
