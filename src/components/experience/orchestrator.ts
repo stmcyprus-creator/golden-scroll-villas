@@ -39,14 +39,19 @@ export const VIEWPORT = { once: true, margin: "-12%" } as const;
 export function useCinematics() {
   const reduced = useReducedMotion();
   const [lowPower, setLowPower] = useState(false);
+  const [coarse, setCoarse] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const coarse = window.matchMedia("(pointer: coarse)").matches;
+    const isCoarse = window.matchMedia("(pointer: coarse)").matches;
+    const narrow = window.matchMedia("(max-width: 767px)").matches;
     const cores = (navigator as Navigator & { hardwareConcurrency?: number })
       .hardwareConcurrency;
     const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory;
-    setLowPower(coarse && ((cores ?? 8) <= 4 || (memory ?? 8) <= 4));
+    setCoarse(isCoarse);
+    // Phones and tablets carry the film on a much smaller budget: keep the
+    // choreography, drop the frame-eating filters.
+    setLowPower(isCoarse || narrow || (cores ?? 8) <= 4 || (memory ?? 8) <= 4);
   }, []);
 
   const enabled = !reduced;
@@ -54,12 +59,20 @@ export function useCinematics() {
   return {
     /** Motion allowed at all. */
     enabled,
+    /** Touch device: no hover, interactions unfold on scroll and tap. */
+    coarse,
     /** Reduce expensive effects (blur/filter animation, parallax) on phones. */
     lowPower,
     /** Filter animation is the most expensive thing we do — drop it first. */
     useBlur: enabled && !lowPower,
-    /** Scale a duration; 0 when motion is off. */
-    d: (seconds: number) => (enabled ? seconds : 0.001),
+    /**
+     * Scale a duration: 0 when motion is off, a touch quicker on phones so
+     * long transforms don't outlive a fast thumb scroll.
+     */
+    d: (seconds: number) =>
+      enabled ? (lowPower ? Math.max(0.35, seconds * 0.68) : seconds) : 0.001,
+    /** Stagger between siblings — tightened on phones. */
+    s: (seconds: number) => (enabled ? (lowPower ? seconds * 0.6 : seconds) : 0),
     /** Parallax distance multiplier. */
     p: enabled ? (lowPower ? 0.45 : 1) : 0,
   };
