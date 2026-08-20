@@ -17,7 +17,7 @@ export function Hero() {
   const fade = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
 
   return (
-    <section ref={ref} id="top" className="relative h-[100svh] overflow-hidden">
+    <section ref={ref} id="top" className="grain vignette relative h-[100svh] overflow-hidden">
       {/* Slow camera flight over the sea */}
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         <motion.img
@@ -25,13 +25,25 @@ export function Hero() {
           alt="Вид с воздуха на средиземноморское побережье в золотой час"
           width={1920}
           height={1088}
+          fetchPriority="high"
           className="h-[112%] w-full object-cover"
-          initial={{ scale: 1.18, x: "-2%" }}
-          animate={{ scale: 1.02, x: "1%" }}
-          transition={{ duration: 26, ease: "linear" }}
+          initial={{ scale: 1.2, x: "-2.5%", filter: "blur(18px) saturate(0.72)" }}
+          animate={{ scale: 1.02, x: "1%", filter: "blur(0px) saturate(1)" }}
+          transition={{
+            scale: { duration: 34, ease: "linear" },
+            x: { duration: 34, ease: "linear" },
+            filter: { duration: 3.2, ease: EASE },
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/10 to-ink" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-ink/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/45 via-ink/8 to-ink" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/72 via-ink/10 to-transparent" />
+        {/* A single pass of low sun across the water */}
+        <motion.div
+          className="absolute inset-0 bg-[linear-gradient(105deg,transparent_38%,oklch(0.83_0.083_87/0.12)_50%,transparent_62%)]"
+          initial={{ x: "-45%", opacity: 0 }}
+          animate={{ x: "45%", opacity: [0, 1, 0] }}
+          transition={{ duration: 6.5, delay: 1.4, ease: EASE }}
+        />
       </motion.div>
 
       <motion.div style={{ y: decoY }} className="pointer-events-none absolute inset-0 z-[1]">
