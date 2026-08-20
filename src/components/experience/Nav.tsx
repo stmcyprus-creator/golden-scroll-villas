@@ -38,10 +38,10 @@ export function Nav() {
             condensed ? "py-4 md:py-5" : "py-6 md:py-8"
           }`}
         >
-          <a href="#top" className="group flex items-center gap-3" aria-label="Эс тэ эм риал эстейт">
+          <a href="#top" className="group flex items-center gap-3" aria-label="СТМ Реал Эстейт">
             <img
               src={logo.url}
-              alt="Логотип Эс тэ эм риал эстейт"
+              alt="Логотип СТМ Реал Эстейт"
               width={44}
               height={44}
               decoding="async"
@@ -51,7 +51,7 @@ export function Nav() {
               }`}
             />
             <span className="font-display text-[0.7rem] leading-tight tracking-[0.16em] uppercase sm:text-sm sm:tracking-[0.22em] transition-colors duration-700 group-hover:text-primary md:text-base">
-              Эс тэ эм риал эстейт
+              СТМ Реал Эстейт
             </span>
           </a>
 
@@ -132,7 +132,7 @@ export function Nav() {
               >
                 <p className="eyebrow">Частный офис</p>
                 <p>Аланья · Киренья · Дубай</p>
-                <p>vip@stmrealestate.ru</p>
+                <p>info@stmrealestate.ru</p>
               </motion.div>
             </motion.aside>
           </motion.div>
