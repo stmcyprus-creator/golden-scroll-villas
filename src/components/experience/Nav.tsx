@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import logo from "@/assets/stm-logo.webp.asset.json";
+import logo from "@/assets/stm-logo-transparent.webp.asset.json";
 
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -31,7 +31,7 @@ export function Nav() {
               alt="Логотип Эс тэ эм риал эстейт"
               width={44}
               height={44}
-              className="h-11 w-11 rounded-sm object-cover"
+              className="h-11 w-11 object-contain"
             />
             <span className="font-display text-sm tracking-[0.22em] uppercase md:text-base">
               Эс тэ эм риал эстейт
