@@ -9,6 +9,7 @@ import { Gallery } from "@/components/experience/Gallery";
 import { Concierge } from "@/components/experience/Concierge";
 import { Footer } from "@/components/experience/Footer";
 import { Seam } from "@/components/experience/Seam";
+import { ChapterRail, ChapterBar } from "@/components/experience/ChapterRail";
 import { useLenis } from "@/components/experience/useLenis";
 import ogHome from "@/assets/og-home.jpg.asset.json";
 
@@ -75,6 +76,8 @@ function Index() {
       />
       <div className="relative z-10">
         <Nav />
+        <ChapterRail />
+        <ChapterBar />
         <Hero />
         <StoryScroll />
         <Seam line="Но прежде чем выбрать дом, выбирают тех, кто будет рядом." />
