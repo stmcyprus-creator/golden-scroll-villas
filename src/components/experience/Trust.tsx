@@ -4,8 +4,8 @@ import { Rise, RevealText } from "./RevealText";
 const pillars = [
   {
     n: "01",
-    title: "Персональный подбор",
-    text: "Три адреса, тщательно подобранные для вас. Каждый — после личного выезда на объект.",
+    title: "Личный выбор",
+    text: "Три адреса, выбранные лично для вас. Каждый — после нашего выезда на место.",
   },
   {
     n: "02",
@@ -31,19 +31,19 @@ const pillars = [
 
 export function Trust() {
   return (
-    <section id="trust" className="relative pt-6 pb-32 md:pt-10 md:pb-48">
+    <section id="trust" className="relative scroll-mt-36 pt-6 pb-32 md:scroll-mt-40 md:pt-10 md:pb-48">
       <div className="mx-auto max-w-[1600px] px-6 md:px-12">
         <div className="mb-24 flex flex-col gap-10 md:mb-36 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <p className="eyebrow mb-8">Как мы работаем</p>
-            <h2 className="display-lg">
+            <h2 className="display-lg text-balance">
               <RevealText text="Выбор начинается задолго до первого показа." />
             </h2>
           </div>
           <Rise delay={0.3}>
-            <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Мы помогаем принимать решения, ценность которых не исчезает
-              со временем. Наше участие продолжается и после сделки.
+            <p className="max-w-xs text-pretty text-sm leading-relaxed text-muted-foreground">
+              Мы помогаем сделать выбор, ценность которого не исчезает со
+              временем. И остаёмся рядом после сделки.
             </p>
           </Rise>
         </div>

@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import { EASE, TIMING, VIEWPORT, useCinematics } from "./orchestrator";
 
 /**
@@ -25,9 +25,12 @@ export function RevealText({
   const { enabled, useBlur, d } = useCinematics();
   const words = text.split(" ");
   return (
-    <span className={className}>
+    <span className={`text-balance ${className}`}>
       {words.map((word, i) => (
-        <span key={`${word}-${i}`} className="inline-block overflow-hidden align-bottom">
+        <Fragment key={`${word}-${i}`}>
+        <span
+          className="inline-block overflow-hidden align-bottom pb-[0.14em] -mb-[0.14em]"
+        >
           <motion.span
             className="inline-block will-change-[transform,opacity]"
             initial={{
@@ -48,9 +51,10 @@ export function RevealText({
             }}
           >
             {word}
-            {i < words.length - 1 ? "\u00A0" : ""}
           </motion.span>
         </span>
+        {i < words.length - 1 ? " " : ""}
+        </Fragment>
       ))}
     </span>
   );
