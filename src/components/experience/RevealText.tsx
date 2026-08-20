@@ -25,9 +25,12 @@ export function RevealText({
   const { enabled, useBlur, d } = useCinematics();
   const words = text.split(" ");
   return (
-    <span className={className}>
+    <span className={`text-balance ${className}`}>
       {words.map((word, i) => (
-        <span key={`${word}-${i}`} className="inline-block overflow-hidden align-bottom">
+        <span
+          key={`${word}-${i}`}
+          className="inline-block overflow-hidden align-bottom pb-[0.14em] -mb-[0.14em]"
+        >
           <motion.span
             className="inline-block will-change-[transform,opacity]"
             initial={{
