@@ -76,6 +76,8 @@ function Index() {
       />
       <div className="relative z-10">
         <Nav />
+        <ChapterRail />
+        <ChapterBar />
         <Hero />
         <StoryScroll />
         <Seam line="Но прежде чем выбрать дом, выбирают тех, кто будет рядом." />
