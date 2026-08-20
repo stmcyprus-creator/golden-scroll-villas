@@ -8,6 +8,7 @@ import { Locations } from "@/components/experience/Locations";
 import { Gallery } from "@/components/experience/Gallery";
 import { Concierge } from "@/components/experience/Concierge";
 import { Footer } from "@/components/experience/Footer";
+import { Seam } from "@/components/experience/Seam";
 import { useLenis } from "@/components/experience/useLenis";
 import ogHome from "@/assets/og-home.jpg.asset.json";
 
