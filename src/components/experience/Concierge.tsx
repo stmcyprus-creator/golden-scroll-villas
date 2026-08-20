@@ -116,7 +116,7 @@ export function Concierge() {
   const picked = suggest(Object.fromEntries(answers.map((a) => [a.key, a.value])));
 
   return (
-    <section id="concierge" className="relative pt-6 pb-32 md:pt-10 md:pb-48">
+    <section id="concierge" className="relative scroll-mt-28 pt-6 pb-32 md:scroll-mt-32 md:pt-10 md:pb-48">
       <div className="mx-auto max-w-[1600px] px-6 md:px-12">
         <div className="grid gap-16 lg:grid-cols-[1fr_1.1fr] lg:gap-24">
           <div>

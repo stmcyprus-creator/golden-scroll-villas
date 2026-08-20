@@ -31,7 +31,7 @@ const pillars = [
 
 export function Trust() {
   return (
-    <section id="trust" className="relative pt-6 pb-32 md:pt-10 md:pb-48">
+    <section id="trust" className="relative scroll-mt-28 pt-6 pb-32 md:scroll-mt-32 md:pt-10 md:pb-48">
       <div className="mx-auto max-w-[1600px] px-6 md:px-12">
         <div className="mb-24 flex flex-col gap-10 md:mb-36 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">

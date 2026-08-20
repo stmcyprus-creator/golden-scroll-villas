@@ -73,7 +73,7 @@ export function Locations() {
   const blurOut = useBlur ? { filter: "blur(0px)" } : {};
 
   return (
-    <section id="locations" className="relative pt-6 pb-32 md:pt-10 md:pb-48">
+    <section id="locations" className="relative scroll-mt-28 pt-6 pb-32 md:scroll-mt-32 md:pt-10 md:pb-48">
       <div className="mx-auto max-w-[1600px] px-6 md:px-12">
         <div className="mb-20 max-w-2xl md:mb-28">
           <p className="eyebrow mb-8">Направления</p>
