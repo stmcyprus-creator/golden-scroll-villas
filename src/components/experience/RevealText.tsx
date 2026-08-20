@@ -52,8 +52,9 @@ export function RevealText({
           >
             {word}
           </motion.span>
-          {i < words.length - 1 ? " " : ""}
         </span>
+        {i < words.length - 1 ? " " : ""}
+        </Fragment>
       ))}
     </span>
   );
