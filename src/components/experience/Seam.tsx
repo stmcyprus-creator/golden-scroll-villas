@@ -1,12 +1,12 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-
-const EASE = [0.16, 1, 0.3, 1] as const;
+import { EASE, TIMING, useCinematics } from "./orchestrator";
 
 /**
  * A cinematic cut between two scenes.
  * A thread of light carries the eye down while a single whispered line
  * hands the story from one chapter to the next — no block ever "ends".
+ * All timings come from the Transition Orchestrator.
  */
 export function Seam({
   line,
@@ -17,6 +17,7 @@ export function Seam({
   id?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const { enabled, lowPower } = useCinematics();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
 
   const draw = useTransform(scrollYProgress, [0.05, 0.5], [0, 1]);
@@ -34,19 +35,21 @@ export function Seam({
     >
       {/* Warm breath of light that bleeds across the cut */}
       <motion.div
-        style={{ opacity: glow }}
-        className="absolute left-1/2 top-1/2 h-[34rem] w-[62rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.07] blur-[150px]"
+        style={{ opacity: enabled ? glow : 0.35 }}
+        className={`absolute left-1/2 top-1/2 h-[34rem] w-[62rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.07] ${
+          lowPower ? "blur-[80px]" : "blur-[150px]"
+        }`}
       />
 
       {/* Thread arriving from the previous scene */}
       <motion.div
-        style={{ scaleY: draw }}
+        style={{ scaleY: enabled ? draw : 1 }}
         className="absolute top-0 left-1/2 h-[38%] w-px origin-top -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/25 to-primary/45"
       />
 
       {line ? (
         <motion.p
-          style={{ opacity: textOpacity, y: textY }}
+          style={{ opacity: enabled ? textOpacity : 1, y: enabled ? textY : 0 }}
           className="relative z-10 max-w-xl px-6 text-center font-display text-xl leading-relaxed tracking-[-0.01em] text-foreground/55 italic md:text-2xl"
         >
           {line}
@@ -55,7 +58,7 @@ export function Seam({
 
       {/* Thread leaving into the next scene */}
       <motion.div
-        style={{ scaleY: release }}
+        style={{ scaleY: enabled ? release : 1 }}
         className="absolute bottom-0 left-1/2 h-[38%] w-px origin-bottom -translate-x-1/2 bg-gradient-to-t from-transparent via-primary/25 to-primary/45"
       />
     </div>
@@ -70,7 +73,7 @@ export function Horizon({ flip = false }: { flip?: boolean }) {
       initial={{ scaleX: 0.2, opacity: 0 }}
       whileInView={{ scaleX: 1, opacity: 1 }}
       viewport={{ once: true, margin: "-15%" }}
-      transition={{ duration: 2.4, ease: EASE }}
+      transition={{ duration: TIMING.seam, ease: EASE }}
       className={`hairline mx-auto max-w-[1600px] ${flip ? "rotate-180" : ""}`}
     />
   );
