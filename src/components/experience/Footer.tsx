@@ -11,7 +11,9 @@ export function Footer() {
               alt="Логотип Эс тэ эм риал эстейт"
               width={40}
               height={40}
-              className="h-10 w-10 object-contain"
+              loading="lazy"
+              decoding="async"
+              className="logo-mark h-10 w-10 object-contain"
             />
             <p className="font-display text-base tracking-[0.22em] uppercase">Эс тэ эм риал эстейт</p>
           </div>
