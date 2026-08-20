@@ -1,8 +1,19 @@
 import { useEffect } from "react";
 
-/** Buttery inertial scrolling for the whole page. */
+/**
+ * Buttery inertial scrolling for the whole page.
+ * Skipped when the visitor asked for reduced motion, and on touch devices —
+ * native momentum there is smoother than any JS loop, and it keeps the film
+ * from stuttering on weaker phones.
+ */
 export function useLenis() {
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
+    if (reduced || coarse) return;
+
     let raf = 0;
     let lenis: { raf: (t: number) => void; destroy: () => void } | null = null;
     let cancelled = false;
