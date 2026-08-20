@@ -52,7 +52,7 @@ export function Hero() {
 
       <motion.div
         style={{ y: contentY, opacity: fade }}
-        className="relative z-10 flex h-full max-w-[1600px] flex-col justify-end px-6 pb-24 md:px-12 md:pb-28"
+        className="relative z-10 flex h-full max-w-[1600px] flex-col justify-end px-6 pb-28 md:px-12 md:pb-36"
       >
         <motion.p
           className="eyebrow mb-8"
