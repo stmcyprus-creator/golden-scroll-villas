@@ -1,18 +1,18 @@
 import { motion } from "motion/react";
 import type { ReactNode } from "react";
-
-const EASE = [0.16, 1, 0.3, 1] as const;
+import { EASE, TIMING, VIEWPORT, useCinematics } from "./orchestrator";
 
 /**
  * Word-by-word reveal — as if the text is being written by light.
- * Each line animates on its own, never all at once.
+ * Timings come from the Transition Orchestrator, so headlines across the
+ * film breathe on the same clock. Blur is dropped on weaker devices.
  */
 export function RevealText({
   text,
   className = "",
   delay = 0,
-  stagger = 0.09,
-  duration = 1.6,
+  stagger = TIMING.stagger,
+  duration = TIMING.reveal,
   once = true,
 }: {
   text: string;
@@ -22,17 +22,30 @@ export function RevealText({
   duration?: number;
   once?: boolean;
 }) {
+  const { enabled, useBlur, d } = useCinematics();
   const words = text.split(" ");
   return (
     <span className={className}>
       {words.map((word, i) => (
         <span key={`${word}-${i}`} className="inline-block overflow-hidden align-bottom">
           <motion.span
-            className="inline-block"
-            initial={{ opacity: 0, y: "0.55em", filter: "blur(12px)" }}
-            whileInView={{ opacity: 1, y: "0em", filter: "blur(0px)" }}
-            viewport={{ once, margin: "-12%" }}
-            transition={{ duration, delay: delay + i * stagger, ease: EASE }}
+            className="inline-block will-change-[transform,opacity]"
+            initial={{
+              opacity: 0,
+              y: "0.55em",
+              ...(useBlur ? { filter: "blur(12px)" } : {}),
+            }}
+            whileInView={{
+              opacity: 1,
+              y: "0em",
+              ...(useBlur ? { filter: "blur(0px)" } : {}),
+            }}
+            viewport={{ once, margin: VIEWPORT.margin }}
+            transition={{
+              duration: d(duration),
+              delay: enabled ? delay + i * stagger : 0,
+              ease: EASE,
+            }}
           >
             {word}
             {i < words.length - 1 ? "\u00A0" : ""}
@@ -48,7 +61,7 @@ export function Rise({
   children,
   delay = 0,
   y = 28,
-  duration = 1.5,
+  duration = TIMING.rise,
   className = "",
 }: {
   children: ReactNode;
@@ -57,13 +70,14 @@ export function Rise({
   duration?: number;
   className?: string;
 }) {
+  const { enabled, d } = useCinematics();
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y }}
+      initial={{ opacity: 0, y: enabled ? y : 0 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10%" }}
-      transition={{ duration, delay, ease: EASE }}
+      viewport={VIEWPORT}
+      transition={{ duration: d(duration), delay: enabled ? delay : 0, ease: EASE }}
     >
       {children}
     </motion.div>
