@@ -69,7 +69,7 @@ export function useCinematics() {
 export const CHAPTERS = [
   { id: "story", label: "Вдохновение" },
   { id: "trust", label: "Доверие" },
-  { id: "locations", label: "Берега" },
+  { id: "locations", label: "Направления" },
   { id: "residences", label: "Резиденции" },
   { id: "gallery", label: "Галерея" },
   { id: "concierge", label: "Разговор" },

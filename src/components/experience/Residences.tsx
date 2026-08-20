@@ -35,23 +35,23 @@ export function Residences() {
   return (
     <section id="residences" className="relative pt-6 pb-32 md:pt-10 md:pb-48">
       <div className="mx-auto max-w-[1600px] px-6 md:px-12">
-        <div className="mb-20 flex flex-col gap-8 md:mb-28 md:flex-row md:items-end md:justify-between">
+        <div className="mb-24 flex flex-col gap-10 md:mb-36 md:flex-row md:items-end md:justify-between">
           <h2 className="display-lg max-w-2xl">
-            <RevealText text="И только тогда — резиденции." stagger={0.12} />
+            <RevealText text="И только тогда — резиденции." />
           </h2>
           <Rise delay={0.3}>
             <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-              Каждый адрес мы посещаем, снимаем и обсуждаем лично. Показываем по три — никогда не каталог.
+              Каждый адрес мы видели сами: свет в комнатах, дорогу к морю, тишину вечером. Мы собираем вашу коллекцию мест для жизни.
             </p>
           </Rise>
         </div>
 
-        <div className="grid gap-10 md:grid-cols-3 md:gap-8">
+        <div className="grid gap-12 md:grid-cols-3 md:gap-10">
           {residences.map((r, i) => (
             <Rise key={r.name} delay={i * 0.16}>
               <GlowSurface
                 as="article"
-                className="group relative flex h-full flex-col overflow-hidden rounded-sm border border-border/50 bg-card/30 transition-all duration-[1200ms] [transition-timing-function:var(--ease-silk)] hover:-translate-y-2 hover:border-primary/20 hover:bg-card/50 hover:shadow-[var(--shadow-showcase)]"
+                className="group relative flex h-full flex-col overflow-hidden rounded-sm border border-border/50 bg-card/30 transition-all duration-[1200ms] [transition-timing-function:var(--ease-silk)] hover:-translate-y-1.5 hover:border-primary/20 hover:bg-card/50 hover:shadow-[var(--shadow-showcase)]"
               >
                 <div className="relative aspect-[4/5] overflow-hidden">
                   <img
@@ -61,20 +61,20 @@ export function Residences() {
                     decoding="async"
                     width={1280}
                     height={1600}
-                    className="h-full w-full object-cover transition-transform duration-[2000ms] [transition-timing-function:var(--ease-silk)] group-hover:scale-[1.05]"
+                    className="h-full w-full object-cover transition-transform duration-[2600ms] [transition-timing-function:var(--ease-silk)] group-hover:scale-[1.045]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
                   <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_100%,oklch(0.83_0.083_87/0.16),transparent_60%)] opacity-0 transition-opacity duration-[1400ms] [transition-timing-function:var(--ease-silk)] group-hover:opacity-100" />
-                  <p className="absolute left-7 top-7 z-10 text-[0.62rem] uppercase tracking-[0.32em] text-foreground/65">
+                  <p className="absolute left-8 top-8 z-10 text-[0.62rem] uppercase tracking-[0.32em] text-foreground/65">
                     {r.place}
                   </p>
                 </div>
 
-                <div className="relative z-10 flex flex-1 flex-col p-8 md:p-9">
+                <div className="relative z-10 flex flex-1 flex-col p-9 md:p-11">
                   <h3 className="font-display text-[2rem] leading-tight tracking-[-0.02em]">
                     {r.name}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{r.meta}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{r.meta}</p>
 
                   <div className="mt-10 flex items-end justify-between">
                     <span className="font-display text-[1.6rem] tracking-tight text-foreground/80 transition-all duration-[1200ms] [transition-timing-function:var(--ease-silk)] group-hover:text-primary group-hover:[text-shadow:0_0_32px_oklch(0.83_0.083_87/0.35)]">
