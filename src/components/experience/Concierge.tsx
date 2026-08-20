@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
+import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { RevealText } from "./RevealText";
 import { EASE, TIMING, useCinematics } from "./orchestrator";
@@ -99,6 +100,7 @@ export function Concierge() {
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<{ key: string; value: string }[]>([]);
   const [value, setValue] = useState("");
+  const [consent, setConsent] = useState(false);
   const { useBlur, d } = useCinematics();
   const done = index >= steps.length;
   const step = steps[index];
@@ -175,24 +177,49 @@ export function Concierge() {
                     </div>
                   ) : (
                     <form
-                      className="mt-10 flex items-center gap-4 border-b border-border pb-4"
+                      className="mt-10"
                       onSubmit={(e) => {
                         e.preventDefault();
+                        if (!consent) return;
                         commit(value);
                       }}
                     >
-                      <input
-                        value={value}
-                        onChange={(e) => setValue(e.target.value)}
-                        placeholder={step.placeholder}
-                        className="w-full bg-transparent text-lg outline-none placeholder:text-muted-foreground/60"
-                      />
-                      <button
-                        type="submit"
-                        className="shrink-0 text-[0.65rem] uppercase tracking-[0.28em] text-primary"
-                      >
-                        Отправить
-                      </button>
+                      <div className="flex items-center gap-4 border-b border-border pb-4">
+                        <input
+                          value={value}
+                          onChange={(e) => setValue(e.target.value)}
+                          placeholder={step.placeholder}
+                          className="w-full bg-transparent text-lg outline-none placeholder:text-muted-foreground/60"
+                        />
+                        <button
+                          type="submit"
+                          disabled={!consent}
+                          className="shrink-0 text-[0.65rem] uppercase tracking-[0.28em] text-primary disabled:cursor-not-allowed disabled:text-muted-foreground/50"
+                        >
+                          Отправить
+                        </button>
+                      </div>
+
+                      <label className="mt-6 flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-muted-foreground">
+                        <input
+                          type="checkbox"
+                          checked={consent}
+                          onChange={(e) => setConsent(e.target.checked)}
+                          required
+                          className="mt-0.5 h-4 w-4 shrink-0 accent-primary"
+                        />
+                        <span>
+                          Я даю согласие на обработку моих персональных данных в соответствии с{" "}
+                          <Link
+                            to="/privacy"
+                            target="_blank"
+                            className="text-primary underline underline-offset-4"
+                          >
+                            Политикой в отношении обработки персональных данных
+                          </Link>
+                          . Без согласия отправка заявки невозможна.
+                        </span>
+                      </label>
                     </form>
                   )}
                 </motion.div>
