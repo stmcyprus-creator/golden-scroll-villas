@@ -27,8 +27,8 @@ export function RevealText({
   return (
     <span className={`text-balance ${className}`}>
       {words.map((word, i) => (
+        <Fragment key={`${word}-${i}`}>
         <span
-          key={`${word}-${i}`}
           className="inline-block overflow-hidden align-bottom pb-[0.14em] -mb-[0.14em]"
         >
           <motion.span
