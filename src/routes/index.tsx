@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/experience/Nav";
 import { Hero } from "@/components/experience/Hero";
 import { StoryScroll } from "@/components/experience/StoryScroll";
+import { Trust } from "@/components/experience/Trust";
 import { Residences } from "@/components/experience/Residences";
 import { Locations } from "@/components/experience/Locations";
 import { Gallery } from "@/components/experience/Gallery";
