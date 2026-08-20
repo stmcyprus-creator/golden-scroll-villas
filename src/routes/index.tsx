@@ -8,6 +8,8 @@ import { Gallery } from "@/components/experience/Gallery";
 import { Concierge } from "@/components/experience/Concierge";
 import { Footer } from "@/components/experience/Footer";
 import { useLenis } from "@/components/experience/useLenis";
+import ogHome from "@/assets/og-home.jpg.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,14 +30,20 @@ export const Route = createFileRoute("/")({
       { property: "og:locale", content: "ru_RU" },
       { property: "og:site_name", content: "Эс тэ эм риал эстейт" },
       { property: "og:url", content: "https://golden-scroll-villas.lovable.app/" },
+      { property: "og:image", content: `https://golden-scroll-villas.lovable.app${ogHome.url}` },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Вилла у Средиземного моря на закате" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Эс тэ эм риал эстейт — элитная недвижимость у моря" },
       {
         name: "twitter:description",
         content: "Виллы и пентхаусы у моря в Аланье, Кирении и Дубае.",
       },
+      { name: "twitter:image", content: `https://golden-scroll-villas.lovable.app${ogHome.url}` },
     ],
     links: [{ rel: "canonical", href: "https://golden-scroll-villas.lovable.app/" }],
+
     scripts: [
       {
         type: "application/ld+json",

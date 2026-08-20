@@ -12,3 +12,6 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://golden-scroll-villas.lovable.app/sitemap.xml
+

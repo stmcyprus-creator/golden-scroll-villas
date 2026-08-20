@@ -1,5 +1,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
+import logo from "@/assets/stm-logo.webp.asset.json";
+
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -23,9 +25,19 @@ export function Nav() {
         className="fixed inset-x-0 top-0 z-50"
       >
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-6 md:px-12 md:py-8">
-          <a href="#top" className="font-display text-xl tracking-[0.22em] uppercase">
-            Эс тэ эм риал эстейт
+          <a href="#top" className="flex items-center gap-3" aria-label="Эс тэ эм риал эстейт">
+            <img
+              src={logo.url}
+              alt="Логотип Эс тэ эм риал эстейт"
+              width={44}
+              height={44}
+              className="h-11 w-11 rounded-sm object-cover"
+            />
+            <span className="font-display text-sm tracking-[0.22em] uppercase md:text-base">
+              Эс тэ эм риал эстейт
+            </span>
           </a>
+
           <nav className="hidden items-center gap-10 lg:flex">
             {links.slice(0, 4).map((l) => (
               <a
