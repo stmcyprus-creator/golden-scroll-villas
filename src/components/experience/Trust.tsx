@@ -33,17 +33,17 @@ export function Trust() {
   return (
     <section id="trust" className="relative pt-6 pb-32 md:pt-10 md:pb-48">
       <div className="mx-auto max-w-[1600px] px-6 md:px-12">
-        <div className="mb-20 flex flex-col gap-10 md:mb-28 md:flex-row md:items-end md:justify-between">
+        <div className="mb-24 flex flex-col gap-10 md:mb-36 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <p className="eyebrow mb-8">Как мы работаем</p>
             <h2 className="display-lg">
-              <RevealText text="Не каталог. Сопровождение." stagger={0.13} />
+              <RevealText text="Подбор начинается задолго до первого показа." />
             </h2>
           </div>
           <Rise delay={0.3}>
             <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Покупка дома за границей — это не сделка, а несколько месяцев решений.
-              Мы проходим их вместе с вами.
+              Мы помогаем принимать решения, ценность которых не исчезает
+              со временем. Наше участие продолжается и после сделки.
             </p>
           </Rise>
         </div>
