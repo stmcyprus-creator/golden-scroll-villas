@@ -128,18 +128,34 @@
 
 @utility display-xl {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 8.5vw, 5.5rem);
-  line-height: 0.98;
+  font-size: clamp(2.6rem, 8.5vw, 5.5rem);
+  line-height: 1;
   font-weight: 300;
   letter-spacing: -0.03em;
+  text-wrap: balance;
+  overflow-wrap: break-word;
 }
 
 @utility display-lg {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5.6vw, 4rem);
-  line-height: 1.04;
+  font-size: clamp(2rem, 5.6vw, 4rem);
+  line-height: 1.08;
   font-weight: 300;
   letter-spacing: -0.025em;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+/* Russian copy breaks badly at narrow widths — soften it globally */
+p {
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 767px) {
+  p {
+    hyphens: auto;
+  }
 }
 
 @utility gold-text {
