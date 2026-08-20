@@ -51,8 +51,8 @@ export function RevealText({
             }}
           >
             {word}
-            {i < words.length - 1 ? "\u00A0" : ""}
           </motion.span>
+          {i < words.length - 1 ? " " : ""}
         </span>
       ))}
     </span>
