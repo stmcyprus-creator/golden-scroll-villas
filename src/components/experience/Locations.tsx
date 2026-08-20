@@ -59,7 +59,7 @@ export function Locations() {
   const ty = 300 - y * zoom;
 
   return (
-    <section id="locations" className="relative overflow-hidden py-32 md:py-48">
+    <section id="locations" className="relative overflow-hidden pt-6 pb-32 md:pt-10 md:pb-48">
       <div className="mx-auto max-w-[1600px] px-6 md:px-12">
         <div className="mb-16 max-w-2xl">
           <p className="eyebrow mb-8">Где мы работаем</p>
