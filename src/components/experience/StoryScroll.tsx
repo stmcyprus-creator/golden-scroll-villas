@@ -77,14 +77,13 @@ function Chapter({
         </h2>
       </motion.div>
 
-      {/* A thread of light carrying you into the next chapter */}
-      {!last && (
-        <motion.div
-          style={{ scaleY: threadScale }}
-          className="absolute bottom-0 left-1/2 z-10 h-24 w-px origin-top -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/45 to-primary/70"
-          aria-hidden
-        />
-      )}
+      {/* A thread of light carrying you into the next chapter — and out of the last one */}
+      <motion.div
+        style={{ scaleY: threadScale }}
+        className="absolute bottom-0 left-1/2 z-10 h-24 w-px origin-top -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/45 to-primary/70"
+        aria-hidden
+      />
+      {last ? null : null}
       <span className="absolute bottom-10 right-6 z-10 font-display text-sm tracking-[0.3em] text-foreground/25 md:right-12">
         0{index + 1} / 0{chaptersCount}
       </span>

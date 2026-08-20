@@ -8,6 +8,7 @@ import { Locations } from "@/components/experience/Locations";
 import { Gallery } from "@/components/experience/Gallery";
 import { Concierge } from "@/components/experience/Concierge";
 import { Footer } from "@/components/experience/Footer";
+import { Seam } from "@/components/experience/Seam";
 import { useLenis } from "@/components/experience/useLenis";
 import ogHome from "@/assets/og-home.jpg.asset.json";
 
@@ -67,15 +68,27 @@ function Index() {
 
   return (
     <main className="relative bg-background">
-      <Nav />
-      <Hero />
-      <StoryScroll />
-      <Trust />
-      <Residences />
-      <Locations />
-      <Gallery />
-      <Concierge />
-      <Footer />
+      {/* One continuous atmosphere behind every scene — the film never cuts to black */}
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(120%_80%_at_50%_0%,oklch(0.83_0.083_87/0.05),transparent_55%),radial-gradient(90%_70%_at_50%_100%,oklch(0.83_0.083_87/0.04),transparent_60%)]"
+      />
+      <div className="relative z-10">
+        <Nav />
+        <Hero />
+        <StoryScroll />
+        <Seam line="Но прежде чем выбрать дом, выбирают тех, кто будет рядом." />
+        <Trust />
+        <Seam line="Сначала берег. Дом приходит следом." />
+        <Locations />
+        <Seam line="Три побережья — и три адреса, которые мы выбрали сами." />
+        <Residences />
+        <Seam line="Дальше только свет, вода и тишина." />
+        <Gallery />
+        <Seam line="Остаётся один разговор." />
+        <Concierge />
+        <Footer />
+      </div>
     </main>
   );
 }

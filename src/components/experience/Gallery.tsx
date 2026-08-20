@@ -66,7 +66,7 @@ export function Gallery() {
   const railRef = useRailInertia<HTMLDivElement>();
 
   return (
-    <section id="gallery" className="relative py-32 md:py-48">
+    <section id="gallery" className="relative pt-6 pb-32 md:pt-10 md:pb-48">
       <div className="mx-auto mb-16 flex max-w-[1600px] flex-col gap-8 px-6 md:mb-24 md:flex-row md:items-end md:justify-between md:px-12">
         <div>
           <p className="eyebrow mb-8">Галерея</p>
