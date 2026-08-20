@@ -52,7 +52,6 @@ export function Residences() {
             <Rise key={r.name} delay={i * 0.26} y={44} duration={1.8}>
               <GlowSurface
                 as="article"
-                tabIndex={0}
                 className="group relative flex h-full flex-col overflow-hidden rounded-sm border border-border/50 bg-card/30 outline-none transition-all duration-[1600ms] [transition-timing-function:var(--ease-silk)] focus-visible:border-primary/30 hover:-translate-y-2.5 hover:border-primary/25 hover:bg-card/55 hover:shadow-[var(--shadow-showcase)]"
               >
                 <div className="relative aspect-[4/5] overflow-hidden md:aspect-[4/5]">
@@ -63,7 +62,7 @@ export function Residences() {
                     decoding="async"
                     width={1280}
                     height={1600}
-                    className="h-full w-full scale-[1.04] object-cover transition-transform duration-[3400ms] [transition-timing-function:var(--ease-silk)] group-hover:scale-[1.09] group-hover:brightness-[1.04] motion-safe:animate-[none]"
+                    className="h-full w-full object-cover transition-transform duration-[3400ms] [transition-timing-function:var(--ease-silk)] group-hover:scale-[1.09] group-hover:brightness-[1.04]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
                   <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_100%,oklch(0.83_0.083_87/0.16),transparent_60%)] opacity-0 transition-opacity duration-[1800ms] [transition-timing-function:var(--ease-silk)] group-hover:opacity-100 [@media(hover:none)]:opacity-100" />
