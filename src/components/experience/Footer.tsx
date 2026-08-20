@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import logo from "@/assets/stm-logo-transparent.webp.asset.json";
 
 export function Footer() {
@@ -32,6 +33,11 @@ export function Footer() {
             </a>
           </p>
           <p className="mt-1">Аланья · Киренья · Дубай</p>
+          <p className="mt-4">
+            <Link to="/privacy" className="transition-colors hover:text-primary">
+              Политика обработки персональных данных
+            </Link>
+          </p>
         </div>
       </div>
     </footer>
