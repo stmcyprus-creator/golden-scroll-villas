@@ -1,8 +1,10 @@
 import prop1 from "@/assets/prop-1.jpg";
 import prop2 from "@/assets/prop-2.jpg";
 import prop3 from "@/assets/prop-3.jpg";
+import { motion } from "motion/react";
 import { GlowSurface } from "./GlowSurface";
 import { Rise, RevealText } from "./RevealText";
+import { EASE, useCinematics } from "./orchestrator";
 
 const residences = [
   {
