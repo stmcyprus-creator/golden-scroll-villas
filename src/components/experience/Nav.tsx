@@ -1,9 +1,7 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
 import logo from "@/assets/stm-logo-transparent.webp.asset.json";
-
-
-const EASE = [0.16, 1, 0.3, 1] as const;
+import { EASE, useCinematics } from "./orchestrator";
 
 const links = [
   { label: "История", href: "#story" },
@@ -17,6 +15,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const [condensed, setCondensed] = useState(false);
   const { scrollY } = useScroll();
+  const { enabled, lowPower, d, s: st } = useCinematics();
 
   useMotionValueEvent(scrollY, "change", (v) => {
     setCondensed(v > 80);
@@ -25,12 +24,12 @@ export function Nav() {
   return (
     <>
       <motion.header
-        initial={{ opacity: 0, y: -18 }}
+        initial={{ opacity: 0, y: enabled ? -18 : 0 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.8, delay: 2.6, ease: EASE }}
+        transition={{ duration: d(1.8), delay: st(lowPower ? 1.6 : 2.6), ease: EASE }}
         className={`fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-[1200ms] [transition-timing-function:var(--ease-silk)] ${
           condensed
-            ? "border-b border-border/40 bg-ink/45 backdrop-blur-xl"
+            ? "border-b border-border/40 bg-ink/80 backdrop-blur-lg md:bg-ink/45 md:backdrop-blur-xl"
             : "border-b border-transparent bg-transparent"
         }`}
       >
@@ -51,7 +50,7 @@ export function Nav() {
                 condensed ? "h-9" : "h-11"
               }`}
             />
-            <span className="font-display text-sm tracking-[0.22em] uppercase transition-colors duration-700 group-hover:text-primary md:text-base">
+            <span className="font-display text-[0.7rem] leading-tight tracking-[0.16em] uppercase sm:text-sm sm:tracking-[0.22em] transition-colors duration-700 group-hover:text-primary md:text-base">
               Эс тэ эм риал эстейт
             </span>
           </a>
