@@ -9,7 +9,7 @@ import { Gallery } from "@/components/experience/Gallery";
 import { Concierge } from "@/components/experience/Concierge";
 import { Footer } from "@/components/experience/Footer";
 import { Seam } from "@/components/experience/Seam";
-import { ChapterBar } from "@/components/experience/ChapterBar";
+import { ChapterBar } from "@/components/experience/ChapterRail";
 import { useLenis } from "@/components/experience/useLenis";
 import ogHome from "@/assets/og-home.jpg.asset.json";
 
@@ -79,7 +79,7 @@ function Index() {
         <ChapterBar />
         <Hero />
         <StoryScroll />
-        <Seam line="Но прежде чем выбрать дом, выбирают тех, кто будет рядом." />
+        <Seam line="Но прежде чем выбрать место для жизни, выбирают тех, кто будет рядом." />
         <Trust />
         <Seam line="Сначала место. Дом приходит следом." />
         <Locations />

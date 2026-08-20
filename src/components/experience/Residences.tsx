@@ -48,10 +48,10 @@ export function Residences() {
 
         <div className="grid gap-12 md:grid-cols-3 md:gap-10">
           {residences.map((r, i) => (
-            <Rise key={r.name} delay={i * 0.16}>
+            <Rise key={r.name} delay={i * 0.26} y={44} duration={1.8}>
               <GlowSurface
                 as="article"
-                className="group relative flex h-full flex-col overflow-hidden rounded-sm border border-border/50 bg-card/30 transition-all duration-[1200ms] [transition-timing-function:var(--ease-silk)] hover:-translate-y-1.5 hover:border-primary/20 hover:bg-card/50 hover:shadow-[var(--shadow-showcase)]"
+                className="group relative flex h-full flex-col overflow-hidden rounded-sm border border-border/50 bg-card/30 transition-all duration-[1600ms] [transition-timing-function:var(--ease-silk)] hover:-translate-y-2.5 hover:border-primary/25 hover:bg-card/55 hover:shadow-[var(--shadow-showcase)]"
               >
                 <div className="relative aspect-[4/5] overflow-hidden">
                   <img
@@ -61,10 +61,10 @@ export function Residences() {
                     decoding="async"
                     width={1280}
                     height={1600}
-                    className="h-full w-full object-cover transition-transform duration-[2600ms] [transition-timing-function:var(--ease-silk)] group-hover:scale-[1.045]"
+                    className="h-full w-full object-cover transition-transform duration-[3400ms] [transition-timing-function:var(--ease-silk)] group-hover:scale-[1.06] group-hover:brightness-[1.04]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
-                  <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_100%,oklch(0.83_0.083_87/0.16),transparent_60%)] opacity-0 transition-opacity duration-[1400ms] [transition-timing-function:var(--ease-silk)] group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_100%,oklch(0.83_0.083_87/0.16),transparent_60%)] opacity-0 transition-opacity duration-[1800ms] [transition-timing-function:var(--ease-silk)] group-hover:opacity-100" />
                   <p className="absolute left-8 top-8 z-10 text-[0.62rem] uppercase tracking-[0.32em] text-foreground/65">
                     {r.place}
                   </p>
@@ -82,9 +82,9 @@ export function Residences() {
                     </span>
                   </div>
 
-                  <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-[1200ms] [transition-timing-function:var(--ease-silk)] group-hover:grid-rows-[1fr]">
+                  <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-[1200ms] [transition-timing-function:var(--ease-silk)] group-hover:grid-rows-[1fr] motion-reduce:grid-rows-[1fr]">
                     <div className="overflow-hidden">
-                      <button className="mt-7 w-full rounded-full border border-primary/25 px-6 py-3.5 text-[0.62rem] uppercase tracking-[0.32em] text-primary/90 opacity-0 transition-all duration-[1100ms] [transition-timing-function:var(--ease-silk)] group-hover:opacity-100 hover:border-primary/45 hover:bg-primary/[0.07] hover:text-primary">
+                      <button className="mt-7 w-full rounded-full border border-primary/25 px-6 py-3.5 text-[0.62rem] uppercase tracking-[0.32em] text-primary/90 opacity-0 transition-all delay-[220ms] duration-[1300ms] [transition-timing-function:var(--ease-silk)] group-hover:opacity-100 hover:border-primary/45 hover:bg-primary/[0.07] hover:text-primary">
                         Запросить досье
                       </button>
                     </div>
