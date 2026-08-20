@@ -122,7 +122,7 @@ export function Concierge() {
           <div>
             <p className="eyebrow mb-8">Частный консьерж</p>
             <h2 className="display-lg">
-              <RevealText text="Разговор вместо анкеты." />
+              <RevealText text="Начнём с нескольких вопросов." />
             </h2>
             <p className="mt-8 max-w-sm text-sm leading-relaxed text-muted-foreground">
               Несколько вопросов, которые мы задали бы за столом. В конце —

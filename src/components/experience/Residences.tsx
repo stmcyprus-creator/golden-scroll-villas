@@ -37,7 +37,7 @@ export function Residences() {
       <div className="mx-auto max-w-[1600px] px-6 md:px-12">
         <div className="mb-24 flex flex-col gap-10 md:mb-36 md:flex-row md:items-end md:justify-between">
           <h2 className="display-lg max-w-2xl">
-            <RevealText text="И только тогда — резиденции." />
+            <RevealText text="И теперь — сами резиденции." />
           </h2>
           <Rise delay={0.3}>
             <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
