@@ -56,6 +56,7 @@ export const Route = createFileRoute("/")({
           name: "СТМ Реал Эстейт",
           url: "https://golden-scroll-villas.lovable.app/",
           email: "info@stmrealestate.ru",
+          telephone: "+7 905 681 40 08",
           areaServed: ["Аланья", "Киренья", "Дубай"],
         }),
       },

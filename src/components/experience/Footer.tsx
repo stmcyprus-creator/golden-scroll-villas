@@ -23,6 +23,14 @@ export function Footer() {
         </div>
         <div className="text-sm text-muted-foreground">
           <p>info@stmrealestate.ru</p>
+          <p className="mt-1">
+            <a href="tel:+79056814008">+7 905 681 40 08</a>
+          </p>
+          <p className="mt-1">
+            <a href="https://wa.me/79056814008" target="_blank" rel="noopener noreferrer">
+              WhatsApp
+            </a>
+          </p>
           <p className="mt-1">Аланья · Киренья · Дубай</p>
         </div>
       </div>

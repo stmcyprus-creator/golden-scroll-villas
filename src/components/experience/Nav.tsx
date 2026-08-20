@@ -133,6 +133,14 @@ export function Nav() {
                 <p className="eyebrow">Частный офис</p>
                 <p>Аланья · Киренья · Дубай</p>
                 <p>info@stmrealestate.ru</p>
+                <p>
+                  <a href="tel:+79056814008">+7 905 681 40 08</a>
+                </p>
+                <p>
+                  <a href="https://wa.me/79056814008" target="_blank" rel="noopener noreferrer">
+                    WhatsApp
+                  </a>
+                </p>
               </motion.div>
             </motion.aside>
           </motion.div>
