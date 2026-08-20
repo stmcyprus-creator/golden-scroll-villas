@@ -40,8 +40,8 @@ const steps: Step[] = [
 
 /** A quiet, hand-picked answer — one address, never a list. */
 function suggest(answers: Record<string, string>) {
-  const place = answers.place ?? "";
-  const purpose = answers.purpose ?? "";
+  const place = answers["place"] ?? "";
+  const purpose = answers["purpose"] ?? "";
 
   const byPlace: Record<string, { name: string; where: string; note: string }> = {
     "Турция": {
