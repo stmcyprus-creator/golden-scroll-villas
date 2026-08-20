@@ -34,6 +34,7 @@ const residences = [
 ];
 
 export function Residences() {
+  const { enabled, d } = useCinematics();
   return (
     <section id="residences" className="relative pt-6 pb-32 md:pt-10 md:pb-48">
       <div className="mx-auto max-w-[1600px] px-6 md:px-12">
