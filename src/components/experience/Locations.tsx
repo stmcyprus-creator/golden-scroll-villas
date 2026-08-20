@@ -83,7 +83,7 @@ export function Locations() {
 
                   <motion.g
                     animate={{ scale: zoom, x: tx, y: ty }}
-                    transition={{ duration: 1.8, ease: EASE }}
+                    transition={{ type: "spring", stiffness: 42, damping: 22, mass: 1.1 }}
                     style={{ originX: 0, originY: 0 }}
                   >
                     {/* Abstract coastline masses */}
@@ -127,25 +127,52 @@ export function Locations() {
                           role="button"
                           aria-label={r.label}
                         >
-                          <circle cx={r.dot.x} cy={r.dot.y} r="60" fill="url(#halo)" opacity={on ? 1 : 0} />
                           <motion.circle
                             cx={r.dot.x}
                             cy={r.dot.y}
-                            animate={{ r: on ? 6 : 4 }}
-                            transition={{ duration: 1, ease: EASE }}
-                            fill={on ? "oklch(0.83 0.083 87)" : "oklch(1 0 0 / 0.5)"}
+                            r="60"
+                            fill="url(#halo)"
+                            animate={{ opacity: on ? 1 : 0, scale: on ? 1 : 0.7 }}
+                            style={{ originX: `${r.dot.x}px`, originY: `${r.dot.y}px` }}
+                            transition={{ duration: 1.6, ease: EASE }}
+                          />
+                          {/* Slow sonar ring on the active region */}
+                          {on && (
+                            <motion.circle
+                              cx={r.dot.x}
+                              cy={r.dot.y}
+                              fill="none"
+                              stroke="oklch(0.83 0.083 87)"
+                              strokeWidth="0.6"
+                              initial={{ r: 6, opacity: 0.55 }}
+                              animate={{ r: [6, 34], opacity: [0.55, 0] }}
+                              transition={{ duration: 4.2, repeat: Infinity, ease: "easeOut" }}
+                            />
+                          )}
+                          <motion.circle
+                            cx={r.dot.x}
+                            cy={r.dot.y}
+                            animate={{
+                              r: on ? 5.5 : 3.6,
+                              fill: on ? "oklch(0.83 0.083 87)" : "oklch(1 0 0 / 0.45)",
+                            }}
+                            transition={{ duration: 1.3, ease: EASE }}
                           />
                           <circle cx={r.dot.x} cy={r.dot.y} r="26" fill="transparent" />
-                          <text
+                          <motion.text
                             x={r.dot.x + 14}
                             y={r.dot.y + 4}
-                            fill={on ? "oklch(0.83 0.083 87)" : "oklch(1 0 0 / 0.55)"}
+                            animate={{
+                              fill: on ? "oklch(0.83 0.083 87)" : "oklch(1 0 0 / 0.5)",
+                              opacity: on ? 1 : 0.75,
+                            }}
+                            transition={{ duration: 1.2, ease: EASE }}
                             fontSize="9"
                             letterSpacing="1.6"
                             style={{ textTransform: "uppercase" }}
                           >
                             {r.label}
-                          </text>
+                          </motion.text>
                         </g>
                       );
                     })}

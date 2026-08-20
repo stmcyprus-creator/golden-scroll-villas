@@ -17,7 +17,7 @@ export function Hero() {
   const fade = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
 
   return (
-    <section ref={ref} id="top" className="relative h-[100svh] overflow-hidden">
+    <section ref={ref} id="top" className="grain vignette relative h-[100svh] overflow-hidden">
       {/* Slow camera flight over the sea */}
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         <motion.img
@@ -25,13 +25,25 @@ export function Hero() {
           alt="Вид с воздуха на средиземноморское побережье в золотой час"
           width={1920}
           height={1088}
+          fetchPriority="high"
           className="h-[112%] w-full object-cover"
-          initial={{ scale: 1.18, x: "-2%" }}
-          animate={{ scale: 1.02, x: "1%" }}
-          transition={{ duration: 26, ease: "linear" }}
+          initial={{ scale: 1.2, x: "-2.5%", filter: "blur(18px) saturate(0.72)" }}
+          animate={{ scale: 1.02, x: "1%", filter: "blur(0px) saturate(1)" }}
+          transition={{
+            scale: { duration: 34, ease: "linear" },
+            x: { duration: 34, ease: "linear" },
+            filter: { duration: 3.2, ease: EASE },
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/10 to-ink" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-ink/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/45 via-ink/8 to-ink" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/72 via-ink/10 to-transparent" />
+        {/* A single pass of low sun across the water */}
+        <motion.div
+          className="absolute inset-0 bg-[linear-gradient(105deg,transparent_38%,oklch(0.83_0.083_87/0.12)_50%,transparent_62%)]"
+          initial={{ x: "-45%", opacity: 0 }}
+          animate={{ x: "45%", opacity: [0, 1, 0] }}
+          transition={{ duration: 6.5, delay: 1.4, ease: EASE }}
+        />
       </motion.div>
 
       <motion.div style={{ y: decoY }} className="pointer-events-none absolute inset-0 z-[1]">
@@ -40,25 +52,25 @@ export function Hero() {
 
       <motion.div
         style={{ y: contentY, opacity: fade }}
-        className="relative z-10 flex h-full max-w-[1600px] flex-col justify-end px-6 pb-24 md:px-12 md:pb-28"
+        className="relative z-10 flex h-full max-w-[1600px] flex-col justify-end px-6 pb-28 md:px-12 md:pb-36"
       >
         <motion.p
-          className="eyebrow mb-8"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.8, delay: 0.6, ease: EASE }}
+          className="eyebrow mb-10"
+          initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 2.2, delay: 0.8, ease: EASE }}
         >
           Турция · Северный Кипр · ОАЭ
         </motion.p>
 
-        <h1 className="display-xl max-w-5xl">
+        <h1 className="display-xl max-w-5xl [text-shadow:0_2px_40px_oklch(0.17_0.012_250/0.5)]">
           {lines.map((line, i) => (
-            <span key={line} className="block overflow-hidden">
+            <span key={line} className="block overflow-hidden pb-[0.06em]">
               <motion.span
                 className={`inline-block ${i === 2 ? "gold-text italic" : ""}`}
-                initial={{ opacity: 0, y: "0.6em", filter: "blur(14px)" }}
+                initial={{ opacity: 0, y: "0.72em", filter: "blur(16px)" }}
                 animate={{ opacity: 1, y: "0em", filter: "blur(0px)" }}
-                transition={{ duration: 2.1, delay: 0.9 + i * 0.55, ease: EASE }}
+                transition={{ duration: 2.4, delay: 1.1 + i * 0.62, ease: EASE }}
               >
                 {line}
               </motion.span>
@@ -67,16 +79,17 @@ export function Hero() {
         </h1>
 
         <motion.div
-          className="mt-12 flex flex-wrap items-center gap-6"
-          initial={{ opacity: 0, y: 22 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.8, delay: 3.1, ease: EASE }}
+          className="mt-14 flex flex-wrap items-center gap-8"
+          initial={{ opacity: 0, y: 22, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 2.2, delay: 3.5, ease: EASE }}
         >
           <a
             href="#story"
-            className="glass group relative overflow-hidden rounded-full px-9 py-4 text-[0.7rem] uppercase tracking-[0.28em] transition-all duration-700 hover:border-primary/40"
+            className="glass group relative overflow-hidden rounded-full px-10 py-4 text-[0.7rem] uppercase tracking-[0.3em] transition-all duration-[1100ms] [transition-timing-function:var(--ease-silk)] hover:border-primary/40"
           >
-            <span className="relative z-10 transition-colors duration-700 group-hover:text-primary">
+            <span className="absolute inset-0 -translate-x-full bg-[linear-gradient(100deg,transparent,oklch(0.83_0.083_87/0.14),transparent)] transition-transform duration-[1400ms] [transition-timing-function:var(--ease-silk)] group-hover:translate-x-full" />
+            <span className="relative z-10 transition-colors duration-[1100ms] group-hover:text-primary">
               Начать путешествие
             </span>
           </a>

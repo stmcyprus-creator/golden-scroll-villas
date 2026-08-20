@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
 import logo from "@/assets/stm-logo-transparent.webp.asset.json";
 
@@ -15,25 +15,43 @@ const links = [
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const [condensed, setCondensed] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (v) => {
+    setCondensed(v > 80);
+  });
 
   return (
     <>
       <motion.header
         initial={{ opacity: 0, y: -18 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.6, delay: 2.4, ease: EASE }}
-        className="fixed inset-x-0 top-0 z-50"
+        transition={{ duration: 1.8, delay: 2.6, ease: EASE }}
+        className={`fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-[1200ms] [transition-timing-function:var(--ease-silk)] ${
+          condensed
+            ? "border-b border-border/40 bg-ink/45 backdrop-blur-xl"
+            : "border-b border-transparent bg-transparent"
+        }`}
       >
-        <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-6 md:px-12 md:py-8">
-          <a href="#top" className="flex items-center gap-3" aria-label="Эс тэ эм риал эстейт">
+        <div
+          className={`mx-auto flex max-w-[1600px] items-center justify-between px-6 transition-[padding] duration-[1200ms] [transition-timing-function:var(--ease-silk)] md:px-12 ${
+            condensed ? "py-4 md:py-5" : "py-6 md:py-8"
+          }`}
+        >
+          <a href="#top" className="group flex items-center gap-3" aria-label="Эс тэ эм риал эстейт">
             <img
               src={logo.url}
               alt="Логотип Эс тэ эм риал эстейт"
               width={44}
               height={44}
-              className="h-11 w-11 object-contain"
+              decoding="async"
+              fetchPriority="high"
+              className={`logo-mark w-auto object-contain transition-[height] duration-[1200ms] [transition-timing-function:var(--ease-silk)] ${
+                condensed ? "h-9" : "h-11"
+              }`}
             />
-            <span className="font-display text-sm tracking-[0.22em] uppercase md:text-base">
+            <span className="font-display text-sm tracking-[0.22em] uppercase transition-colors duration-700 group-hover:text-primary md:text-base">
               Эс тэ эм риал эстейт
             </span>
           </a>
@@ -43,15 +61,16 @@ export function Nav() {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-[0.7rem] uppercase tracking-[0.24em] text-foreground/70 transition-colors duration-500 hover:text-primary"
+                className="group relative text-[0.7rem] uppercase tracking-[0.24em] text-foreground/70 transition-colors duration-700 hover:text-primary"
               >
                 {l.label}
+                <span className="absolute -bottom-2 left-0 h-px w-full origin-right scale-x-0 bg-primary/60 transition-transform duration-[900ms] [transition-timing-function:var(--ease-silk)] group-hover:origin-left group-hover:scale-x-100" />
               </a>
             ))}
           </nav>
           <button
             onClick={() => setOpen(true)}
-            className="glass flex items-center gap-3 rounded-full px-5 py-2.5 text-[0.68rem] uppercase tracking-[0.24em] transition-colors duration-500 hover:text-primary"
+            className="glass flex items-center gap-3 rounded-full px-5 py-2.5 text-[0.68rem] uppercase tracking-[0.24em] transition-all duration-[900ms] [transition-timing-function:var(--ease-silk)] hover:border-primary/40 hover:text-primary"
             aria-label="Открыть меню"
           >
             Меню

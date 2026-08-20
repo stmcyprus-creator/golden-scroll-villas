@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import stmLogo from "../assets/stm-logo-transparent.webp.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -98,6 +99,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
+      {
+        rel: "preload",
+        as: "image",
+        type: "image/webp",
+        href: stmLogo.url,
+        fetchPriority: "high",
+      },
     ],
   }),
   shellComponent: RootShell,
