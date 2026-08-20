@@ -70,6 +70,7 @@ function Index() {
       <Nav />
       <Hero />
       <StoryScroll />
+      <Trust />
       <Residences />
       <Locations />
       <Gallery />
