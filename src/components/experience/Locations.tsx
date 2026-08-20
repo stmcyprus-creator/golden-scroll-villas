@@ -83,7 +83,7 @@ export function Locations() {
 
                   <motion.g
                     animate={{ scale: zoom, x: tx, y: ty }}
-                    transition={{ duration: 1.8, ease: EASE }}
+                    transition={{ type: "spring", stiffness: 42, damping: 22, mass: 1.1 }}
                     style={{ originX: 0, originY: 0 }}
                   >
                     {/* Abstract coastline masses */}
