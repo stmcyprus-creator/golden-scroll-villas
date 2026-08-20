@@ -63,39 +63,56 @@ const slides = [
 ];
 
 export function Gallery() {
+  const railRef = useRailInertia<HTMLDivElement>();
+
   return (
     <section id="gallery" className="relative py-32 md:py-48">
-      <div className="mx-auto mb-16 max-w-[1600px] px-6 md:mb-24 md:px-12">
-        <p className="eyebrow mb-8">Галерея</p>
-        <h2 className="display-lg max-w-3xl">
-          <RevealText text="Смотрите медленно. Листайте вбок." stagger={0.12} />
-        </h2>
+      <div className="mx-auto mb-16 flex max-w-[1600px] flex-col gap-8 px-6 md:mb-24 md:flex-row md:items-end md:justify-between md:px-12">
+        <div>
+          <p className="eyebrow mb-8">Галерея</p>
+          <h2 className="display-lg max-w-3xl">
+            <RevealText text="Смотрите медленно. Листайте вбок." stagger={0.12} />
+          </h2>
+        </div>
+        <p className="text-[0.62rem] uppercase tracking-[0.32em] text-muted-foreground">
+          Скролл · вбок
+        </p>
       </div>
 
-      <div className="no-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-6 md:gap-10 md:px-12">
-        {slides.map((s) => (
-          <figure
-            key={s.caption}
-            className="group relative w-[86vw] shrink-0 snap-center md:w-[74vw]"
-          >
-            <div className="overflow-hidden rounded-sm">
-              <img
-                src={s.image}
-                alt={s.caption}
-                loading="lazy"
-                width={1600}
-                height={1000}
-                className="aspect-[16/10] w-full object-cover transition-transform duration-[1600ms] [transition-timing-function:var(--ease-silk)] group-hover:scale-[1.04]"
-              />
-            </div>
-            <figcaption className="mt-5 flex items-baseline justify-between">
-              <span className="text-sm text-foreground/80">{s.caption}</span>
-              <span className="text-[0.62rem] uppercase tracking-[0.28em] text-primary">
-                {s.place}
-              </span>
-            </figcaption>
-          </figure>
-        ))}
+      <div className="relative">
+        <div
+          ref={railRef}
+          className="no-scrollbar flex snap-x snap-mandatory gap-8 overflow-x-auto px-6 pb-6 md:gap-14 md:px-12"
+          style={{ scrollBehavior: "auto" }}
+        >
+          {slides.map((s) => (
+            <figure
+              key={s.caption}
+              className="group relative w-[86vw] shrink-0 snap-center md:w-[72vw]"
+            >
+              <div className="overflow-hidden rounded-sm">
+                <img
+                  src={s.image}
+                  alt={s.caption}
+                  loading="lazy"
+                  decoding="async"
+                  width={1600}
+                  height={1000}
+                  className="aspect-[16/10] w-full object-cover transition-transform duration-[2200ms] [transition-timing-function:var(--ease-silk)] group-hover:scale-[1.035]"
+                />
+              </div>
+              <figcaption className="mt-6 flex items-baseline justify-between">
+                <span className="text-sm text-foreground/75">{s.caption}</span>
+                <span className="text-[0.6rem] uppercase tracking-[0.32em] text-primary/80">
+                  {s.place}
+                </span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        {/* Cinematic edge falloff */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent md:w-28" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent md:w-28" />
       </div>
     </section>
   );
