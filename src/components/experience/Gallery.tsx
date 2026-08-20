@@ -111,7 +111,7 @@ export function Gallery() {
   };
 
   return (
-    <section id="gallery" className="relative scroll-mt-28 pt-6 pb-32 md:scroll-mt-32 md:pt-10 md:pb-48">
+    <section id="gallery" className="relative scroll-mt-36 pt-6 pb-32 md:scroll-mt-40 md:pt-10 md:pb-48">
       <div className="mx-auto mb-20 flex max-w-[1600px] flex-col gap-8 px-6 md:mb-32 md:flex-row md:items-end md:justify-between md:px-12">
         <div>
           <p className="eyebrow mb-8">Галерея</p>
