@@ -78,10 +78,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Эс тэ эм риал эстейт" },
+      { title: "СТМ Реал Эстейт" },
       { name: "description", content: "Элитная недвижимость у Средиземного моря и в ОАЭ" },
-      { name: "author", content: "Эс тэ эм риал эстейт" },
-      { property: "og:title", content: "Эс тэ эм риал эстейт" },
+      { name: "author", content: "СТМ Реал Эстейт" },
+      { property: "og:title", content: "СТМ Реал Эстейт" },
       { property: "og:description", content: "Элитная недвижимость у Средиземного моря и в ОАЭ" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
