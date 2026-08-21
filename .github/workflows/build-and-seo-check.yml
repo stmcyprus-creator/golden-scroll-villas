@@ -1,0 +1,45 @@
+name: Build & SEO check
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SEO_BASE_URL: https://golden-scroll-villas.lovable.app
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build (static prerender) + verify SEO
+        id: build
+        run: bun run build
+
+      - name: Upload prerendered HTML on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: prerendered-html
+          path: |
+            dist/client/**/*.html
+            dist/client/sitemap.xml
+            dist/client/robots.txt
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Upload full static output
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-site
+          path: dist/client
+          retention-days: 7
