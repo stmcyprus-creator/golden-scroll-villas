@@ -11,7 +11,22 @@ npm run build   # сборка + автопроверка SEO в HTML
 `scripts/verify-static-seo.mjs` запускается после каждой сборки и падает с ненулевым кодом,
 если в любом сгенерированном HTML нет `<title>`, `description`, `og:title/description/type/url`,
 `twitter:card`, `<link rel="canonical">`, а на главной — валидного JSON-LD.
+Дополнительно проверяется: JSON-LD валиден и имеет `@context: https://schema.org` с ожидаемым `@type`
+(главная — RealEstateAgent/Organization, /privacy — WebPage), а `canonical` и `og:url` на всех страницах
+указывают на один baseUrl и совпадают с адресом самой страницы (без дефолтных/пустых значений).
 Проверка читает файлы напрямую, без запуска сервера.
+
+baseUrl берётся из `SEO_BASE_URL` (или `VITE_SITE_URL`), по умолчанию — https://golden-scroll-villas.lovable.app:
+
+```bash
+SEO_BASE_URL=https://example.com npm run build
+```
+
+## CI
+
+`.github/workflows/build-and-seo-check.yml` — на каждый PR и push в main выполняет
+`bun run build` (сборка + SEO-проверка). При падении выгружает артефакт `prerendered-html`
+со сгенерированными HTML, sitemap.xml и robots.txt; при успехе — артефакт `static-site` с `dist/client`.
 
 ## Кэш CDN
 

@@ -35,6 +35,29 @@ export const Route = createFileRoute("/privacy")({
       },
     ],
     links: [{ rel: "canonical", href: "https://golden-scroll-villas.lovable.app/privacy" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Политика обработки персональных данных",
+          url: "https://golden-scroll-villas.lovable.app/privacy",
+          inLanguage: "ru-RU",
+          isPartOf: {
+            "@type": "WebSite",
+            name: "СТМ Реал Эстейт",
+            url: "https://golden-scroll-villas.lovable.app/",
+          },
+          publisher: {
+            "@type": "RealEstateAgent",
+            name: "СТМ Реал Эстейт",
+            email: "info@stmrealestate.ru",
+            telephone: "+79056814008",
+          },
+        }),
+      },
+    ],
   }),
   component: PrivacyPage,
 });
