@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CookieRouteImport } from './routes/cookie'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookieRoute = CookieRouteImport.update({
+  id: '/cookie',
+  path: '/cookie',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -25,27 +31,31 @@ const PrivacyRoute = PrivacyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cookie': typeof CookieRoute
   '/privacy': typeof PrivacyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cookie': typeof CookieRoute
   '/privacy': typeof PrivacyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cookie': typeof CookieRoute
   '/privacy': typeof PrivacyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/privacy'
+  fullPaths: '/' | '/cookie' | '/privacy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privacy'
-  id: '__root__' | '/' | '/privacy'
+  to: '/' | '/cookie' | '/privacy'
+  id: '__root__' | '/' | '/cookie' | '/privacy'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CookieRoute: typeof CookieRoute
   PrivacyRoute: typeof PrivacyRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookie': {
+      id: '/cookie'
+      path: '/cookie'
+      fullPath: '/cookie'
+      preLoaderRoute: typeof CookieRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CookieRoute: CookieRoute,
   PrivacyRoute: PrivacyRoute,
 }
 export const routeTree = rootRouteImport
