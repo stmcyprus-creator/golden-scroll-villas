@@ -22,7 +22,11 @@ const BASE_URL = (
 ).replace(/\/+$/, "");
 
 /** Pages that must exist in the static output. */
-const REQUIRED_PAGES = ["index.html", join("privacy", "index.html")];
+const REQUIRED_PAGES = [
+  "index.html",
+  join("privacy", "index.html"),
+  join("cookie", "index.html"),
+];
 
 /** Values that must never survive into a production build. */
 const PLACEHOLDERS = [
@@ -41,6 +45,7 @@ const PLACEHOLDERS = [
 const EXPECTED_JSONLD = {
   "index.html": ["RealEstateAgent", "Organization", "LocalBusiness"],
   [join("privacy", "index.html")]: ["WebPage", "PrivacyPolicy"],
+  [join("cookie", "index.html")]: ["WebPage"],
 };
 const DEFAULT_JSONLD_TYPES = ["WebPage", "WebSite", "Organization"];
 
