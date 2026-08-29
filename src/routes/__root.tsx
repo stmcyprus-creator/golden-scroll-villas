@@ -12,26 +12,52 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import stmLogo from "../assets/stm-logo-transparent.webp.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { CookieNotice } from "../components/experience/CookieNotice";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Страница не найдена</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Страница, которую вы ищете, не существует или была перемещена.
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-6">
+      {/* Атмосфера лендинга: мягкое золотое свечение и виньетка */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_80%_at_50%_0%,oklch(0.83_0.083_87/0.06),transparent_55%),radial-gradient(90%_70%_at_50%_100%,oklch(0.83_0.083_87/0.05),transparent_60%)]"
+      />
+      <div className="relative z-10 max-w-2xl text-center">
+        <img
+          src={stmLogo.url}
+          alt="Логотип СТМ Реал Эстейт"
+          width={56}
+          height={56}
+          className="logo-mark mx-auto h-14 w-14 object-contain"
+        />
+        <p className="eyebrow mt-10">Страница не найдена</p>
+        <h1 className="display-xl mt-4">
+          <span className="gold-text">404</span>
+        </h1>
+        <p className="display-lg mt-6">Этой страницы нет в нашей коллекции</p>
+        <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-muted-foreground">
+          Возможно, адрес изменился или страница была перемещена. Вернёмся туда, где начинается
+          путешествие.
         </p>
-        <div className="mt-6">
+        <div className="hairline mx-auto mt-10 max-w-xs" />
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="rounded-full bg-primary px-8 py-3 text-xs font-medium tracking-[0.18em] uppercase text-primary-foreground transition-all duration-500 hover:brightness-110"
           >
             На главную
           </Link>
+          <a
+            href="https://wa.me/79056814008"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs tracking-[0.14em] uppercase text-muted-foreground transition-colors hover:text-primary"
+          >
+            Написать в WhatsApp
+          </a>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
@@ -135,6 +161,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <CookieNotice />
     </QueryClientProvider>
   );
 }
