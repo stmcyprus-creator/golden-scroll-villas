@@ -9,14 +9,17 @@ export function CookieNotice() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    let t: number | undefined;
     try {
       if (!localStorage.getItem(STORAGE_KEY)) {
-        const t = window.setTimeout(() => setVisible(true), 1800);
-        return () => window.clearTimeout(t);
+        t = window.setTimeout(() => setVisible(true), 1800);
       }
     } catch {
       /* приватный режим — просто не показываем повторно в рамках сессии */
     }
+    return () => {
+      if (t !== undefined) window.clearTimeout(t);
+    };
   }, []);
 
   const accept = () => {
