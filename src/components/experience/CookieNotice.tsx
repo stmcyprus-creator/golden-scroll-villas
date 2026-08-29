@@ -50,10 +50,10 @@ export function CookieNotice() {
               Мы используем файлы cookie, чтобы сайт работал стабильно, а впечатление от него
               оставалось безупречным. Продолжая пользоваться сайтом, вы соглашаетесь с{" "}
               <Link
-                to="/privacy"
+                to="/cookie"
                 className="text-primary underline-offset-4 transition-colors hover:underline"
               >
-                политикой обработки персональных данных
+                политикой использования файлов cookie
               </Link>
               .
             </p>
@@ -65,7 +65,7 @@ export function CookieNotice() {
                 Принять
               </button>
               <Link
-                to="/privacy"
+                to="/cookie"
                 className="text-xs tracking-[0.1em] uppercase text-muted-foreground transition-colors hover:text-primary"
               >
                 Подробнее
