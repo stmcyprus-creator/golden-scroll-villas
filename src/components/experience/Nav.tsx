@@ -39,7 +39,7 @@ export function Nav() {
             condensed ? "py-4 md:py-5" : "py-6 md:py-8"
           }`}
         >
-          <a href="#top" className="group flex items-center gap-3" aria-label="СТМ Реал Эстейт">
+          <Link to="/" className="group flex items-center gap-3" aria-label="СТМ Реал Эстейт">
             <img
               src={logo.url}
               alt="Логотип СТМ Реал Эстейт"
@@ -54,7 +54,7 @@ export function Nav() {
             <span className="font-display text-[0.7rem] leading-tight tracking-[0.16em] uppercase sm:text-sm sm:tracking-[0.22em] transition-colors duration-700 group-hover:text-primary md:text-base">
               СТМ Реал Эстейт
             </span>
-          </a>
+          </Link>
 
           <nav className="hidden items-center gap-10 lg:flex">
             {links.slice(0, 4).map((l) => (
