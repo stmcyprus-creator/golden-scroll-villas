@@ -7,15 +7,17 @@ export function Footer() {
       <div className="mx-auto flex max-w-[1600px] flex-col gap-8 px-6 md:flex-row md:items-end md:justify-between md:px-12">
         <div>
           <div className="flex items-center gap-3">
-            <img
-              src={logo.url}
-              alt="Логотип СТМ Реал Эстейт"
-              width={40}
-              height={40}
-              loading="lazy"
-              decoding="async"
-              className="logo-mark h-10 w-10 object-contain"
-            />
+            <Link to="/" aria-label="На главную" className="shrink-0">
+              <img
+                src={logo.url}
+                alt="Логотип СТМ Реал Эстейт"
+                width={40}
+                height={40}
+                loading="lazy"
+                decoding="async"
+                className="logo-mark h-10 w-10 object-contain"
+              />
+            </Link>
             <p className="font-display text-base tracking-[0.22em] uppercase">СТМ Реал Эстейт</p>
           </div>
           <p className="mt-3 max-w-xs text-sm text-muted-foreground">

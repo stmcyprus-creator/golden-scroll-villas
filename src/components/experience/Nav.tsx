@@ -1,5 +1,6 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import logo from "@/assets/stm-logo-transparent.webp.asset.json";
 import { EASE, useCinematics } from "./orchestrator";
 
