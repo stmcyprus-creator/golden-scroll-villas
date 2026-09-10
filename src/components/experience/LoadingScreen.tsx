@@ -1,35 +1,17 @@
 import { useEffect, useState } from "react";
 import stmLogo from "@/assets/stm-logo-transparent.webp.asset.json";
 
-const MIN_VISIBLE_MS = 650;
-const MAX_VISIBLE_MS = 5000;
+const VISIBLE_MS = 700;
 const EXIT_MS = 900;
 
 export function LoadingScreen() {
   const [phase, setPhase] = useState<"visible" | "leaving" | "hidden">("visible");
 
   useEffect(() => {
-    const startedAt = performance.now();
-    let minimumTimer: number | undefined;
-
-    const finish = () => {
-      const remaining = Math.max(0, MIN_VISIBLE_MS - (performance.now() - startedAt));
-      minimumTimer = window.setTimeout(() => setPhase("leaving"), remaining);
-    };
-
-    if (document.readyState === "complete") {
-      finish();
-    } else {
-      window.addEventListener("load", finish, { once: true });
-    }
-
-    const safetyTimer = window.setTimeout(() => setPhase("leaving"), MAX_VISIBLE_MS);
-
-    return () => {
-      window.removeEventListener("load", finish);
-      window.clearTimeout(safetyTimer);
-      if (minimumTimer !== undefined) window.clearTimeout(minimumTimer);
-    };
+    // Hydration means the page is already interactive. Do not wait for every
+    // large photograph to finish downloading before revealing it.
+    const revealTimer = window.setTimeout(() => setPhase("leaving"), VISIBLE_MS);
+    return () => window.clearTimeout(revealTimer);
   }, []);
 
   useEffect(() => {
