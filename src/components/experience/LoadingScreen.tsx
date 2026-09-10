@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import stmLogo from "@/assets/stm-logo-transparent.webp.asset.json";
 
-const VISIBLE_MS = 700;
-const EXIT_MS = 900;
+const VISIBLE_MS = 350;
+const EXIT_MS = 450;
 
 export function LoadingScreen() {
   const [phase, setPhase] = useState<"visible" | "leaving" | "hidden">("visible");

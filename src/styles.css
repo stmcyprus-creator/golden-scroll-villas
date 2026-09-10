@@ -247,8 +247,8 @@ p {
   opacity: 1;
   visibility: visible;
   transition:
-    opacity 900ms var(--ease-silk),
-    visibility 0s linear 900ms;
+    opacity 450ms var(--ease-silk),
+    visibility 0s linear 450ms;
 }
 
 .loading-screen::before {
