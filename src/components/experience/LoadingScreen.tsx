@@ -1,30 +1,9 @@
-import { useEffect, useState } from "react";
 import stmLogo from "@/assets/stm-logo-transparent.webp.asset.json";
 
-const VISIBLE_MS = 350;
-const EXIT_MS = 450;
-
 export function LoadingScreen() {
-  const [phase, setPhase] = useState<"visible" | "leaving" | "hidden">("visible");
-
-  useEffect(() => {
-    // Hydration means the page is already interactive. Do not wait for every
-    // large photograph to finish downloading before revealing it.
-    const revealTimer = window.setTimeout(() => setPhase("leaving"), VISIBLE_MS);
-    return () => window.clearTimeout(revealTimer);
-  }, []);
-
-  useEffect(() => {
-    if (phase !== "leaving") return;
-    const exitTimer = window.setTimeout(() => setPhase("hidden"), EXIT_MS);
-    return () => window.clearTimeout(exitTimer);
-  }, [phase]);
-
-  if (phase === "hidden") return null;
-
   return (
     <div
-      className={`loading-screen ${phase === "leaving" ? "loading-screen--leaving" : ""}`}
+      className="loading-screen"
       role="status"
       aria-live="polite"
       aria-label="Загрузка страницы"

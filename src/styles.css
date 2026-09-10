@@ -246,9 +246,7 @@ p {
   background-color: var(--background);
   opacity: 1;
   visibility: visible;
-  transition:
-    opacity 450ms var(--ease-silk),
-    visibility 0s linear 450ms;
+  animation: loading-screen-exit 450ms var(--ease-silk) 350ms forwards;
 }
 
 .loading-screen::before {
@@ -256,12 +254,6 @@ p {
   position: absolute;
   inset: 0;
   background: radial-gradient(ellipse at center, oklch(0.83 0.083 87 / 0.07), transparent 55%);
-}
-
-.loading-screen--leaving {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
 }
 
 .loading-screen__content {
@@ -315,6 +307,14 @@ p {
   }
   100% {
     transform: translateX(100%) scaleX(0.25);
+  }
+}
+
+@keyframes loading-screen-exit {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
 }
 
