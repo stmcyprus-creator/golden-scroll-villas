@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import stmLogo from "../assets/stm-logo-transparent.webp.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CookieNotice } from "../components/experience/CookieNotice";
+import { LoadingScreen } from "../components/experience/LoadingScreen";
 
 function NotFoundComponent() {
   return (
@@ -159,6 +160,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <LoadingScreen />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <CookieNotice />
