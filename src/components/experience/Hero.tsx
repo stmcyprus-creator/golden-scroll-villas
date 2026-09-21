@@ -8,7 +8,7 @@ const lines = ["Откройте", "новую жизнь", "у Средизем
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { enabled, useBlur, lowPower, d, s: st, p: depth } = useCinematics();
-  const blurIn = (amount: string) => ({ filter: useBlur ? `blur(${amount})` : "blur(0px)" });
+  const blurIn = (_amount: string) => ({ filter: "blur(0px)" });
   const blurOut = { filter: "blur(0px)" };
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
@@ -32,7 +32,7 @@ export function Hero() {
           initial={{
             scale: enabled ? (lowPower ? 1.08 : 1.2) : 1,
             x: enabled ? "-2.5%" : "0%",
-            filter: useBlur ? "blur(18px) saturate(0.72)" : "blur(0px) saturate(1)",
+            filter: "blur(0px) saturate(1)",
           }}
           animate={{
             scale: enabled ? 1.02 : 1,
@@ -42,7 +42,7 @@ export function Hero() {
           transition={{
             scale: { duration: enabled ? 34 : 0, ease: "linear" },
             x: { duration: enabled ? 34 : 0, ease: "linear" },
-            filter: { duration: d(3.2), ease: EASE },
+            filter: { duration: 0, ease: EASE },
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-ink/45 via-ink/8 to-ink" />
@@ -66,9 +66,9 @@ export function Hero() {
       >
         <motion.p
           className="eyebrow mb-8 md:mb-10"
-          initial={{ opacity: 0, y: 14, ...blurIn("8px") }}
+          initial={{ opacity: 1, y: enabled ? 14 : 0, ...blurIn("8px") }}
           animate={{ opacity: 1, y: 0, ...blurOut }}
-          transition={{ duration: d(2.2), delay: st(0.8), ease: EASE }}
+          transition={{ duration: d(1.6), delay: st(0.1), ease: EASE }}
         >
           Турция · Северный Кипр · ОАЭ
         </motion.p>
@@ -78,9 +78,9 @@ export function Hero() {
             <span key={line} className="block overflow-hidden pb-[0.06em]">
               <motion.span
                 className={`inline-block ${i === 2 ? "gold-text italic" : ""}`}
-                initial={{ opacity: 0, y: lowPower ? "0.45em" : "0.72em", ...blurIn("16px") }}
+                initial={{ opacity: 1, y: enabled ? (lowPower ? "0.45em" : "0.72em") : "0em", ...blurIn("16px") }}
                 animate={{ opacity: 1, y: "0em", ...blurOut }}
-                transition={{ duration: d(2.4), delay: st(1.1 + i * 0.62), ease: EASE }}
+                transition={{ duration: d(2), delay: st(0.2 + i * 0.32), ease: EASE }}
               >
                 {line}
               </motion.span>
@@ -90,9 +90,9 @@ export function Hero() {
 
         <motion.div
           className="mt-10 flex flex-wrap items-center gap-6 md:mt-14 md:gap-8"
-          initial={{ opacity: 0, y: 22, ...blurIn("8px") }}
+          initial={{ opacity: 1, y: enabled ? 22 : 0, ...blurIn("8px") }}
           animate={{ opacity: 1, y: 0, ...blurOut }}
-          transition={{ duration: d(2.2), delay: st(enabled && lowPower ? 2.4 : 3.5), ease: EASE }}
+          transition={{ duration: d(1.8), delay: st(lowPower ? 0.7 : 1), ease: EASE }}
         >
           <a
             href="#story"

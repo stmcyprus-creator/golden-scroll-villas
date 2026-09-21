@@ -246,7 +246,8 @@ p {
   background-color: var(--background);
   opacity: 1;
   visibility: visible;
-  animation: loading-screen-exit 450ms var(--ease-silk) 350ms forwards;
+  pointer-events: none;
+  animation: loading-screen-exit 180ms var(--ease-silk) 80ms forwards;
 }
 
 .loading-screen::before {

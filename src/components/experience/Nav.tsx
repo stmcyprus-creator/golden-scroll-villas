@@ -25,9 +25,9 @@ export function Nav() {
   return (
     <>
       <motion.header
-        initial={{ opacity: 0, y: enabled ? -18 : 0 }}
+        initial={{ opacity: 1, y: enabled ? -18 : 0 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: d(1.8), delay: st(lowPower ? 1.6 : 2.6), ease: EASE }}
+        transition={{ duration: d(1.5), delay: st(lowPower ? 0.25 : 0.45), ease: EASE }}
         className={`fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-[1200ms] [transition-timing-function:var(--ease-silk)] ${
           condensed
             ? "border-b border-border/40 bg-ink/80 backdrop-blur-lg md:bg-ink/45 md:backdrop-blur-xl"
