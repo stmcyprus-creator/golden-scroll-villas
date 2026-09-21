@@ -8,7 +8,7 @@ const lines = ["Откройте", "новую жизнь", "у Средизем
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { enabled, useBlur, lowPower, d, s: st, p: depth } = useCinematics();
-  const blurIn = (amount: string) => ({ filter: useBlur ? `blur(${amount})` : "blur(0px)" });
+  const blurIn = (_amount: string) => ({ filter: "blur(0px)" });
   const blurOut = { filter: "blur(0px)" };
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
@@ -32,7 +32,7 @@ export function Hero() {
           initial={{
             scale: enabled ? (lowPower ? 1.08 : 1.2) : 1,
             x: enabled ? "-2.5%" : "0%",
-            filter: useBlur ? "blur(18px) saturate(0.72)" : "blur(0px) saturate(1)",
+            filter: "blur(0px) saturate(1)",
           }}
           animate={{
             scale: enabled ? 1.02 : 1,
@@ -42,7 +42,7 @@ export function Hero() {
           transition={{
             scale: { duration: enabled ? 34 : 0, ease: "linear" },
             x: { duration: enabled ? 34 : 0, ease: "linear" },
-            filter: { duration: d(3.2), ease: EASE },
+            filter: { duration: 0, ease: EASE },
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-ink/45 via-ink/8 to-ink" />
